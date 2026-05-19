@@ -9,4 +9,4 @@ export default defineConfig({
   ],
 })
 
-// export defaul defineConfig({plugins, react(), tailw
+// export defaul defineConfig({plugins, react(), tail
