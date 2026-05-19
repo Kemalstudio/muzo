@@ -9,4 +9,4 @@ export default defineConfig({
   ],
 })
 
-// export defaul def
+// export defaul de
