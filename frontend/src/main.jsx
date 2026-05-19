@@ -8,4 +8,4 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
-// If you want to start measuring performan
+// If you want to start measuring performa
