@@ -9,4 +9,4 @@ export default defineConfig({
   ],
 })
 
-// export defaul defineCo
+// export defaul defineC
