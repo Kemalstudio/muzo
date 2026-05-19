@@ -8,4 +8,4 @@ createRoot(document.getElementById('root')).render(
     <App />
   </StrictMode>,
 )
-// If you want to start measuring perform
+// If you want to start measuring perfor
