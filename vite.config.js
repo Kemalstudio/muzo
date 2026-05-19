@@ -9,4 +9,4 @@ export default defineConfig({
   ],
 })
 
-// export defaul defineConfig({plug
+// export defaul defineConfig({plu
