@@ -30,4 +30,5 @@ class UserPolicy
     {
         return $user->id === $model->id;
     }
+
 }
