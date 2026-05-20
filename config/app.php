@@ -105,6 +105,11 @@ return [
         ),
     ],
 
+    'providers' => [
+        App\Providers\AppServiceProvider::class,
+        App\Providers\AuthServiceProvider::class,
+    ],
+
     /*
     |--------------------------------------------------------------------------
     | Maintenance Mode Driver
