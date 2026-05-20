@@ -1,16 +1,43 @@
-# React + Vite
-
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Oxc](https://oxc.rs)
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/)
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+﻿'# MUZO Frontend'
+'
+'Modern React + Vite architecture for a Spotify-like music streaming platform.'
+'
+'## Architecture'
+'
+'The rontend/src tree is organized for scalability and reuse:'
+'
+'- components/ — shared UI building blocks and layout primitives'
+'  - components/layout/ — app shell, header, footer and layout-specific components'
+'  - components/player/ — music player UI'
+'  - components/ui/ — reusable buttons, cards, section headings, and track cards'
+'- pages/ — route-driven page views (Home, Library, NotFound)'
+'- outes/ — route definitions and route composition'
+'- services/ — API adapters and backend integration modules'
+'- hooks/ — reusable React hooks for data loading and domain logic'
+'- store/ — Zustand stores for global state like player queue and library'
+'
+'## Setup'
+'
+'`ash'
+'cd frontend'
+'npm install'
+'npm run dev'
+'`'
+'
+'## Environment'
+'
+'- Use VITE_API_URL if your API is on a different domain'
+'- Backend routes currently expected at /api/v1 by default'
+'
+'## Notes'
+'
+'- Routing is handled by eact-router-dom'
+'- API calls use xios'
+'- State management uses zustand'
+'- Tailwind CSS is configured with postcss.config.cjs and 	ailwind.config.cjs'
+'
+'## Next steps'
+'
+'- Implement backend endpoints for /tracks and /me/library'
+'- Add auth, playlists, and search flows'
+'- Convert to TypeScript for stronger maintainability'
