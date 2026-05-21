@@ -1,18 +1,22 @@
 import { useMemo } from 'react'
 import useTracks from '../hooks/useTracks'
 import usePlaylists from '../hooks/usePlaylists'
+import useRecentlyPlayed from '../hooks/useRecentlyPlayed'
 import usePlayerStore from '../store/usePlayerStore'
 import SectionHeading from '../components/ui/SectionHeading'
 import TrendingSongCard from '../components/ui/TrendingSongCard'
 import PlaylistCard from '../components/ui/PlaylistCard'
+import RecentlyPlayedCard from '../components/history/RecentlyPlayedCard'
 
 export default function Home() {
   const { tracks, loading: tracksLoading, error: tracksError } = useTracks()
   const { playlists, loading: playlistsLoading, error: playlistsError } = usePlaylists()
+  const { history } = useRecentlyPlayed(10)
   const play = usePlayerStore((s) => s.play)
 
   const trackList = useMemo(() => tracks?.slice(0, 6) || [], [tracks])
   const playlistList = useMemo(() => playlists?.slice(0, 5) || [], [playlists])
+  const recentTracks = useMemo(() => history?.slice(0, 6).map((h) => h.track).filter(Boolean) || [], [history])
 
   return (
     <div className="space-y-12">
@@ -45,6 +49,33 @@ export default function Home() {
           {/* Background Decoration */}
           <div className="absolute -right-32 -top-32 h-96 w-96 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 blur-3xl opacity-10"></div>
         </div>
+      )}
+
+      {/* Recently Played Section */}
+      {recentTracks.length > 0 && (
+        <section>
+          <div className="mb-6 flex items-center justify-between">
+            <div>
+              <h2 className="text-3xl font-semibold text-white">⏱️ Recently Played</h2>
+              <p className="mt-2 text-slate-400">Continue where you left off</p>
+            </div>
+            <a
+              href="/history"
+              className="text-sm font-semibold text-indigo-400 transition hover:text-indigo-300"
+            >
+              View All →
+            </a>
+          </div>
+          <div className="grid gap-4 md:grid-cols-3 lg:grid-cols-6">
+            {recentTracks.map((track) => (
+              <RecentlyPlayedCard
+                key={track.id}
+                track={track}
+                onPlay={play}
+              />
+            ))}
+          </div>
+        </section>
       )}
 
       {/* Trending Songs Section */}
