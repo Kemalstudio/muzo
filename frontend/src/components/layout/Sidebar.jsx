@@ -6,6 +6,7 @@ const navItems = [
   { label: 'Library', to: '/library' },
   { label: 'Playlists', to: '/playlists' },
   { label: 'Liked Songs', to: '/favorites' },
+  { label: 'Recently Played', to: '/history' },
 ]
 
 export default function Sidebar() {
