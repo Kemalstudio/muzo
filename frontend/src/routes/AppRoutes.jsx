@@ -9,6 +9,7 @@ import PlaylistPage from '../pages/Playlist'
 import UserPlaylistsPage from '../pages/UserPlaylists'
 import GenrePage from '../pages/Genre'
 import FavoritesPage from '../pages/Favorites'
+import HistoryPage from '../pages/History'
 import LibraryPage from '../pages/Library'
 import LoginPage from '../pages/Login'
 import RegisterPage from '../pages/Register'
@@ -33,6 +34,7 @@ export default function AppRoutes() {
           <Route path="library" element={<LibraryPage />} />
           <Route path="playlists" element={<UserPlaylistsPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
+          <Route path="history" element={<HistoryPage />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
