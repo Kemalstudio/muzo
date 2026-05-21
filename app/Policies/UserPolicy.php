@@ -8,7 +8,7 @@ class UserPolicy
 {
     public function viewAny(User $user): bool
     {
-        return true; // adjust for your authorization rules
+        return true;
     }
 
     public function view(User $user, User $model): bool
