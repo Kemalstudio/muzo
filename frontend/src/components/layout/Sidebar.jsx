@@ -2,9 +2,10 @@ import { NavLink } from 'react-router-dom'
 
 const navItems = [
   { label: 'Home', to: '/' },
+  { label: 'Explore', to: '/explore' },
   { label: 'Library', to: '/library' },
-  { label: 'Browse', to: '/browse' },
-  { label: 'Favorites', to: '/favorites' },
+  { label: 'Playlists', to: '/playlists' },
+  { label: 'Liked Songs', to: '/favorites' },
 ]
 
 export default function Sidebar() {
