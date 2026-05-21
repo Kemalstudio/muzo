@@ -1,6 +1,7 @@
 import { Link, Outlet } from 'react-router-dom'
 import PlayerBar from '../player/PlayerBar'
 import Sidebar from './Sidebar'
+import SearchBar from '../ui/SearchBar'
 import useAuthStore from '../../store/useAuthStore'
 
 export default function Layout() {
@@ -20,8 +21,13 @@ export default function Layout() {
             </div>
           </div>
 
+          <div className="flex-1 px-4">
+            <SearchBar />
+          </div>
+
           <div className="flex items-center gap-3 text-sm font-medium text-slate-300">
             <Link to="/" className="transition hover:text-white">Home</Link>
+            <Link to="/explore" className="transition hover:text-white">Explore</Link>
             <Link to="/library" className="transition hover:text-white">Library</Link>
             {token ? (
               <button onClick={logout} className="rounded-full border border-slate-800 bg-slate-900/70 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-slate-800">
