@@ -29,10 +29,25 @@ export default function Layout() {
             <Link to="/" className="transition hover:text-white">Home</Link>
             <Link to="/explore" className="transition hover:text-white">Explore</Link>
             <Link to="/library" className="transition hover:text-white">Library</Link>
-            {token ? (
-              <button onClick={logout} className="rounded-full border border-slate-800 bg-slate-900/70 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-slate-800">
-                Logout
-              </button>
+            {token && user ? (
+              <>
+                <Link
+                  to="/profile"
+                  className="flex items-center gap-2 rounded-full border border-slate-800 bg-slate-900/70 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-slate-800"
+                >
+                  {user.avatar_url ? (
+                    <img src={user.avatar_url} alt="Avatar" className="h-6 w-6 rounded-full object-cover" />
+                  ) : (
+                    <span className="inline-flex h-6 w-6 items-center justify-center rounded-full bg-slate-700 text-xs font-bold text-white">
+                      {user.name?.charAt(0).toUpperCase() || 'U'}
+                    </span>
+                  )}
+                  <span className="hidden sm:inline">{user.name}</span>
+                </Link>
+                <button onClick={logout} className="rounded-full border border-slate-800 bg-slate-900/70 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:bg-slate-800">
+                  Logout
+                </button>
+              </>
             ) : (
               <>
                 <Link to="/login" className="rounded-full border border-slate-800 bg-slate-900/70 px-4 py-2 transition hover:bg-slate-800">
