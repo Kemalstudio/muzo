@@ -11,6 +11,7 @@ import GenrePage from '../pages/Genre'
 import FavoritesPage from '../pages/Favorites'
 import HistoryPage from '../pages/History'
 import LibraryPage from '../pages/Library'
+import ProfilePage from '../pages/Profile'
 import LoginPage from '../pages/Login'
 import RegisterPage from '../pages/Register'
 import NotFoundPage from '../pages/NotFound'
@@ -32,6 +33,7 @@ export default function AppRoutes() {
 
         <Route element={<ProtectedRoute />}>
           <Route path="library" element={<LibraryPage />} />
+          <Route path="profile" element={<ProfilePage />} />
           <Route path="playlists" element={<UserPlaylistsPage />} />
           <Route path="favorites" element={<FavoritesPage />} />
           <Route path="history" element={<HistoryPage />} />
