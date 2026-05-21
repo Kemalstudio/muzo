@@ -1,4 +1,5 @@
 import { NavLink } from 'react-router-dom'
+import useAuthStore from '../../store/useAuthStore'
 
 const navItems = [
   { label: 'Home', to: '/' },
@@ -10,6 +11,8 @@ const navItems = [
 ]
 
 export default function Sidebar() {
+  const token = useAuthStore((state) => state.token)
+
   return (
     <aside className="sticky top-6 h-fit rounded-3xl border border-slate-800 bg-slate-950/90 p-5 shadow-[0_20px_100px_-80px_rgba(0,0,0,0.5)]">
       <div className="mb-8 flex items-center gap-3">
@@ -36,6 +39,20 @@ export default function Sidebar() {
             {item.label}
           </NavLink>
         ))}
+        {token ? (
+          <NavLink
+            to="/profile"
+            className={({ isActive }) =>
+              `block rounded-2xl px-4 py-3 text-sm font-medium transition ${
+                isActive
+                  ? 'bg-slate-800 text-white shadow-lg shadow-black/20'
+                  : 'text-slate-400 hover:bg-slate-900 hover:text-white'
+              }`
+            }
+          >
+            Profile
+          </NavLink>
+        ) : null}
       </nav>
 
       <div className="mt-8 rounded-3xl border border-slate-800 bg-slate-900 p-4 text-sm text-slate-400">
