@@ -1,10 +1,13 @@
-import { useState } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import usePlayerStore from '../../store/usePlayerStore'
 import useAudioPlayer from '../../hooks/useAudioPlayer'
+import useRecordPlay from '../../hooks/useRecordPlay'
 
 export default function PlayerBar() {
   const audioRef = useAudioPlayer()
+  const { recordPlayback } = useRecordPlay()
   const [showVolumeSlider, setShowVolumeSlider] = useState(false)
+  const recordedTrackIdRef = useRef(null)
 
   const {
     current,
@@ -24,6 +27,14 @@ export default function PlayerBar() {
     setRepeatMode,
     toggleShuffle,
   } = usePlayerStore()
+
+  // Record play when track starts playing
+  useEffect(() => {
+    if (current && isPlaying && recordedTrackIdRef.current !== current.id) {
+      recordedTrackIdRef.current = current.id
+      recordPlayback(current)
+    }
+  }, [current?.id, isPlaying, recordPlayback])
 
   const formatTime = (seconds) => {
     if (!seconds || !isFinite(seconds)) return '0:00'
