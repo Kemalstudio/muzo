@@ -6,7 +6,9 @@ import SearchPage from '../pages/Search'
 import ArtistPage from '../pages/Artist'
 import AlbumPage from '../pages/Album'
 import PlaylistPage from '../pages/Playlist'
+import UserPlaylistsPage from '../pages/UserPlaylists'
 import GenrePage from '../pages/Genre'
+import FavoritesPage from '../pages/Favorites'
 import LibraryPage from '../pages/Library'
 import LoginPage from '../pages/Login'
 import RegisterPage from '../pages/Register'
@@ -29,6 +31,8 @@ export default function AppRoutes() {
 
         <Route element={<ProtectedRoute />}>
           <Route path="library" element={<LibraryPage />} />
+          <Route path="playlists" element={<UserPlaylistsPage />} />
+          <Route path="favorites" element={<FavoritesPage />} />
         </Route>
 
         <Route path="*" element={<NotFoundPage />} />
