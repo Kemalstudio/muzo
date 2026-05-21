@@ -1,4 +1,5 @@
 import Button from './Button'
+import LikeButton from '../favorites/LikeButton'
 
 export default function TrendingSongCard({ track, onPlay, rank }) {
   return (
@@ -9,13 +10,7 @@ export default function TrendingSongCard({ track, onPlay, rank }) {
           <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-600 to-purple-600">
             <span className="text-sm font-bold text-white">#{rank}</span>
           </div>
-          <svg
-            className="h-5 w-5 text-slate-500 opacity-0 transition group-hover:opacity-100"
-            fill="currentColor"
-            viewBox="0 0 24 24"
-          >
-            <path d="M5 13l4 4L19 7" />
-          </svg>
+          <LikeButton track={track} size="sm" />
         </div>
 
         {/* Track Info */}
