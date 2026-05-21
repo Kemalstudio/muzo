@@ -1,7 +1,9 @@
-import { useMemo } from 'react'
+import { useMemo, useState } from 'react'
 import { useParams, useNavigate } from 'react-router-dom'
 import usePlaylist from '../hooks/usePlaylist'
 import usePlayerStore from '../store/usePlayerStore'
+import RemoveFromPlaylistModal from '../components/playlist/RemoveFromPlaylistModal'
+import LikeButton from '../components/favorites/LikeButton'
 import Button from '../components/ui/Button'
 
 export default function Playlist() {
@@ -9,6 +11,7 @@ export default function Playlist() {
   const navigate = useNavigate()
   const { playlist, loading, error } = usePlaylist(id)
   const play = usePlayerStore((s) => s.play)
+  const [removeTrackState, setRemoveTrackState] = useState(null)
 
   const playlistTracks = useMemo(() => playlist?.tracks || [], [playlist?.tracks])
 
@@ -160,7 +163,7 @@ export default function Playlist() {
       {playlistTracks.length > 0 && (
         <section className="space-y-4">
           {/* Table Header */}
-          <div className="hidden lg:grid grid-cols-[50px_1fr_250px_100px_60px] gap-4 px-4 py-3 border-b border-slate-700">
+          <div className="hidden lg:grid grid-cols-[50px_1fr_250px_100px_120px] gap-4 px-4 py-3 border-b border-slate-700">
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">#</div>
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">Title</div>
             <div className="text-xs font-semibold uppercase tracking-wider text-slate-500">Artist</div>
@@ -173,7 +176,7 @@ export default function Playlist() {
             {playlistTracks.map((track, index) => (
               <div
                 key={track.id}
-                className="group grid grid-cols-1 lg:grid-cols-[50px_1fr_250px_100px_60px] gap-4 rounded-lg border border-slate-700/40 bg-slate-950/40 p-4 transition hover:border-indigo-500 hover:bg-slate-900/60"
+                className="group grid grid-cols-1 lg:grid-cols-[50px_1fr_250px_100px_120px] gap-4 rounded-lg border border-slate-700/40 bg-slate-950/40 p-4 transition hover:border-indigo-500 hover:bg-slate-900/60"
               >
                 {/* Track Number */}
                 <div className="hidden lg:flex items-center">
@@ -216,7 +219,7 @@ export default function Playlist() {
                 </div>
 
                 {/* Actions */}
-                <div className="flex items-center gap-2 justify-end lg:justify-center">
+                <div className="flex items-center gap-2 justify-end lg:justify-start">
                   <button
                     onClick={() => play(track)}
                     className="rounded-full p-2 transition hover:bg-indigo-600"
@@ -229,17 +232,22 @@ export default function Playlist() {
                       <path d="M6.3 2.841A1.5 1.5 0 004 4.11V15.89a1.5 1.5 0 002.3 1.269l9.344-5.89a1.5 1.5 0 000-2.538L6.3 2.84z" />
                     </svg>
                   </button>
-                  <button className="rounded-full p-2 transition hover:bg-slate-700">
+                  <LikeButton track={track} size="md" />
+                  <button
+                    onClick={() => setRemoveTrackState(track)}
+                    className="rounded-full p-2 transition hover:bg-rose-600/30 text-rose-400 hover:text-rose-300"
+                  >
                     <svg
-                      className="h-5 w-5 text-slate-400"
-                      fill="currentColor"
-                      viewBox="0 0 20 20"
+                      className="h-5 w-5"
+                      fill="none"
+                      stroke="currentColor"
+                      viewBox="0 0 24 24"
                     >
-                      <path d="M10 12a2 2 0 100-4 2 2 0 000 4z" />
                       <path
-                        fillRule="evenodd"
-                        d="M.458 10C1.732 5.943 5.522 3 10 3s8.268 2.943 9.542 7c-1.274 4.057-5.064 7-9.542 7S1.732 14.057.458 10zM14 10a4 4 0 11-8 0 4 4 0 018 0z"
-                        clipRule="evenodd"
+                        strokeLinecap="round"
+                        strokeLinejoin="round"
+                        strokeWidth={2}
+                        d="M19 7l-.867 12.142A2 2 0 0116.138 21H7.862a2 2 0 01-1.995-1.858L5 7m5 4v6m4-6v6m1-10V4a1 1 0 00-1-1h-4a1 1 0 00-1 1v3M4 7h16"
                       />
                     </svg>
                   </button>
@@ -332,6 +340,19 @@ export default function Playlist() {
             Add songs to get started with this playlist
           </p>
         </div>
+      )}
+
+      {/* Remove Track Modal */}
+      {removeTrackState && (
+        <RemoveFromPlaylistModal
+          track={removeTrackState}
+          playlist={playlist}
+          isOpen={!!removeTrackState}
+          onClose={() => setRemoveTrackState(null)}
+          onRemove={() => {
+            // Optionally refresh playlist after removal
+          }}
+        />
       )}
     </div>
   )
