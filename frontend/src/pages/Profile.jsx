@@ -1,7 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import useAuthStore from '../store/useAuthStore'
-import { updateUserProfile } from '../services/userService'
+import { updateUserProfile } from '../services'
 import SectionHeading from '../components/ui/SectionHeading'
 
 export default function ProfilePage() {
