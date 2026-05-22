@@ -8,6 +8,7 @@ use App\Http\Requests\UpdateGenreRequest;
 use App\Http\Resources\GenreResource;
 use App\Models\Genre;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class GenreController extends Controller
 {
@@ -19,8 +20,14 @@ class GenreController extends Controller
     public function index(Request $request)
     {
         $perPage = (int) $request->get('per_page', 20);
-        $genres = Genre::orderBy('name')->paginate($perPage);
-        return GenreResource::collection($genres);
+        $cacheKey = sprintf('genres.index.%s', md5($request->fullUrl()));
+
+        $data = Cache::remember($cacheKey, now()->addMinutes(10), function () use ($request, $perPage) {
+            $genres = Genre::orderBy('name')->paginate($perPage);
+            return GenreResource::collection($genres->appends($request->query()))->response()->getData(true);
+        });
+
+        return response()->json($data);
     }
 
     public function store(StoreGenreRequest $request)
@@ -31,7 +38,13 @@ class GenreController extends Controller
 
     public function show(Genre $genre)
     {
-        return new GenreResource($genre);
+        $cacheKey = sprintf('genres.show.%s.%s', $genre->id, $genre->updated_at?->timestamp);
+
+        $data = Cache::remember($cacheKey, now()->addMinutes(30), function () use ($genre) {
+            return (new GenreResource($genre))->response()->getData(true);
+        });
+
+        return response()->json($data);
     }
 
     public function update(UpdateGenreRequest $request, Genre $genre)
