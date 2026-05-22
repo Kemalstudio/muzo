@@ -7,12 +7,13 @@ use App\Http\Requests\StoreArtistRequest;
 use App\Http\Requests\UpdateArtistRequest;
 use App\Http\Resources\ArtistResource;
 use App\Models\Artist;
+use App\Services\FileUploadService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 
 class ArtistController extends Controller
 {
-    public function __construct()
+    public function __construct(protected FileUploadService $uploads)
     {
         $this->authorizeResource(Artist::class, 'artist');
     }
@@ -20,8 +21,14 @@ class ArtistController extends Controller
     public function index(Request $request)
     {
         $perPage = (int) $request->get('per_page', 20);
-        $artists = Artist::withCount(['tracks', 'albums'])->orderBy('name')->paginate($perPage);
-        return ArtistResource::collection($artists->appends($request->query()));
+        $cacheKey = sprintf('artists.index.%s', md5($request->fullUrl()));
+
+        $data = Cache::remember($cacheKey, now()->addMinutes(10), function () use ($request, $perPage) {
+            $artists = Artist::withCount(['tracks', 'albums'])->orderBy('name')->paginate($perPage);
+            return ArtistResource::collection($artists->appends($request->query()))->response()->getData(true);
+        });
+
+        return response()->json($data);
     }
 
     public function store(StoreArtistRequest $request)
@@ -29,11 +36,11 @@ class ArtistController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('avatar')) {
-            $data['avatar_path'] = $request->file('avatar')->store('artists/avatars', 'public');
+            $data['avatar_path'] = $this->uploads->storePublicFile($request->file('avatar'), 'artists/avatars');
         }
 
         if ($request->hasFile('banner')) {
-            $data['banner_path'] = $request->file('banner')->store('artists/banners', 'public');
+            $data['banner_path'] = $this->uploads->storePublicFile($request->file('banner'), 'artists/banners');
         }
 
         $artist = Artist::create($data);
@@ -43,13 +50,19 @@ class ArtistController extends Controller
 
     public function show(Artist $artist)
     {
-        $artist->load(['tracks' => function ($q) {
-            $q->select('id', 'artist_id', 'title', 'slug', 'duration', 'audio_url')->limit(10);
-        }, 'albums' => function ($q) {
-            $q->select('id', 'artist_id', 'title', 'slug')->limit(10);
-        }]);
+        $cacheKey = sprintf('artists.show.%s.%s', $artist->id, $artist->updated_at?->timestamp);
 
-        return new ArtistResource($artist);
+        $data = Cache::remember($cacheKey, now()->addMinutes(30), function () use ($artist) {
+            $artist->load(['tracks' => function ($q) {
+                $q->select('id', 'artist_id', 'title', 'slug', 'duration', 'audio_url')->limit(10);
+            }, 'albums' => function ($q) {
+                $q->select('id', 'artist_id', 'title', 'slug')->limit(10);
+            }]);
+
+            return (new ArtistResource($artist))->response()->getData(true);
+        });
+
+        return response()->json($data);
     }
 
     public function update(UpdateArtistRequest $request, Artist $artist)
@@ -57,18 +70,11 @@ class ArtistController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('avatar')) {
-            // delete previous
-            if ($artist->avatar_path) {
-                Storage::disk('public')->delete($artist->avatar_path);
-            }
-            $data['avatar_path'] = $request->file('avatar')->store('artists/avatars', 'public');
+            $data['avatar_path'] = $this->uploads->replacePublicFile($artist->avatar_path, $request->file('avatar'), 'artists/avatars');
         }
 
         if ($request->hasFile('banner')) {
-            if ($artist->banner_path) {
-                Storage::disk('public')->delete($artist->banner_path);
-            }
-            $data['banner_path'] = $request->file('banner')->store('artists/banners', 'public');
+            $data['banner_path'] = $this->uploads->replacePublicFile($artist->banner_path, $request->file('banner'), 'artists/banners');
         }
 
         $artist->update($data);
@@ -78,12 +84,8 @@ class ArtistController extends Controller
 
     public function destroy(Artist $artist)
     {
-        if ($artist->avatar_path) {
-            Storage::disk('public')->delete($artist->avatar_path);
-        }
-        if ($artist->banner_path) {
-            Storage::disk('public')->delete($artist->banner_path);
-        }
+        $this->uploads->deletePublicFile($artist->avatar_path);
+        $this->uploads->deletePublicFile($artist->banner_path);
 
         $artist->delete();
 
