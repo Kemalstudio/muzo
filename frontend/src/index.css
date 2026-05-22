@@ -1,6 +1,4 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
 :root {
   --text: #6b6375;
@@ -59,12 +57,12 @@ body {
 }
 
 #root {
-  width: 1126px;
+  width: 100%;
   max-width: 100%;
   margin: 0 auto;
   text-align: center;
   border-inline: 1px solid var(--border);
-  min-height: 100svh;
+  min-height: 100vh;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -112,4 +110,70 @@ code {
   line-height: 135%;
   padding: 4px 8px;
   background: var(--code-bg);
+}
+
+body {
+  background-image:
+    radial-gradient(circle at top left, rgba(79, 70, 229, 0.18), transparent 24%),
+    radial-gradient(circle at top right, rgba(244, 63, 94, 0.14), transparent 18%),
+    radial-gradient(circle at 20% 80%, rgba(56, 189, 248, 0.12), transparent 20%);
+  background-color: #020617;
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.glass-panel {
+  background: rgba(15, 23, 42, 0.72);
+  border: 1px solid rgba(148, 163, 184, 0.14);
+  backdrop-filter: blur(18px);
+  box-shadow: 0 28px 90px -48px rgba(15, 23, 42, 0.7);
+}
+
+.glass-card {
+  background: rgba(15, 23, 42, 0.58);
+  border: 1px solid rgba(148, 163, 184, 0.12);
+  backdrop-filter: blur(16px);
+  box-shadow: 0 22px 70px -40px rgba(15, 23, 42, 0.72);
+  transition: transform 0.35s ease, background 0.35s ease, box-shadow 0.35s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-3px);
+  background: rgba(255, 255, 255, 0.08);
+  box-shadow: 0 32px 90px -30px rgba(125, 58, 255, 0.26);
+}
+
+.glow-button {
+  background: rgba(255, 255, 255, 0.08);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  box-shadow: 0 10px 30px -18px rgba(125, 58, 255, 0.35);
+  transition: transform 0.25s ease, background 0.25s ease, box-shadow 0.25s ease;
+}
+
+.glow-button:hover {
+  transform: translateY(-1px);
+  background: rgba(255, 255, 255, 0.14);
+  box-shadow: 0 16px 42px -22px rgba(125, 58, 255, 0.4);
+}
+
+.anim-fade-up {
+  animation: fadeUp 0.8s ease forwards;
+  opacity: 0;
+}
+
+.anim-fade-up.delay-100 {
+  animation-delay: 0.1s;
+}
+
+.anim-fade-up.delay-200 {
+  animation-delay: 0.2s;
 }
