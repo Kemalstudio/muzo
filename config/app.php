@@ -108,6 +108,8 @@ return [
     'providers' => [
         App\Providers\AppServiceProvider::class,
         App\Providers\AuthServiceProvider::class,
+        Illuminate\Auth\AuthServiceProvider::class,
+        Illuminate\Filesystem\FilesystemServiceProvider::class,
     ],
 
     /*
