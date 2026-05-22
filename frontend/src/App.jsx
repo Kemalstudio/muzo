@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
 import AppRoutes from './routes/AppRoutes'
 import useAuthStore from './store/useAuthStore'
-import { fetchMe } from './services/authService'
+import { fetchMe } from './services'
 
 export default function App() {
   const loadLocalAuth = useAuthStore((state) => state.loadLocalAuth)
