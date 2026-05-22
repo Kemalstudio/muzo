@@ -19,8 +19,8 @@ class UpdateArtistRequest extends FormRequest
             'name' => 'required|string|max:150',
             'slug' => 'nullable|string|max:160|unique:artists,slug,' . $artistId,
             'bio' => 'nullable|string|max:4000',
-            'avatar' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:2048',
-            'banner' => 'nullable|image|mimes:jpg,jpeg,png,webp|max:4096',
+            'avatar' => 'nullable|image|mimetypes:image/jpeg,image/png,image/webp|mimes:jpg,jpeg,png,webp|max:2048',
+            'banner' => 'nullable|image|mimetypes:image/jpeg,image/png,image/webp|mimes:jpg,jpeg,png,webp|max:4096',
             'is_verified' => 'sometimes|boolean',
         ];
     }
