@@ -28,7 +28,7 @@ export default function PlayerBar() {
     toggleShuffle,
   } = usePlayerStore()
 
-  // Record play when track starts playin
+  // Record play when track starts play
   useEffect(() => {
     if (current && isPlaying && recordedTrackIdRef.current !== current.id) {
       recordedTrackIdRef.current = current.id
