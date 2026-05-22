@@ -1,6 +1,6 @@
 import { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { login } from '../services/authService'
+import { login } from '../services'
 import useAuthStore from '../store/useAuthStore'
 
 export default function LoginPage() {
