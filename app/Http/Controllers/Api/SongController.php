@@ -7,12 +7,13 @@ use App\Http\Requests\StoreSongRequest;
 use App\Http\Requests\UpdateSongRequest;
 use App\Http\Resources\SongResource;
 use App\Models\Song;
+use App\Services\FileUploadService;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Storage;
+use Illuminate\Support\Facades\Cache;
 
 class SongController extends Controller
 {
-    public function __construct()
+    public function __construct(protected FileUploadService $uploads)
     {
         $this->authorizeResource(Song::class, 'song');
     }
@@ -20,11 +21,17 @@ class SongController extends Controller
     public function index(Request $request)
     {
         $perPage = (int) $request->get('per_page', 20);
-        $songs = Song::with(['artist:id,name,slug', 'album:id,title,slug'])
-            ->orderBy('release_date', 'desc')
-            ->paginate($perPage);
+        $cacheKey = sprintf('songs.index.%s', md5($request->fullUrl()));
 
-        return SongResource::collection($songs->appends($request->query()));
+        $data = Cache::remember($cacheKey, now()->addMinutes(10), function () use ($request, $perPage) {
+            $songs = Song::with(['artist:id,name,slug', 'album:id,title,slug'])
+                ->orderBy('release_date', 'desc')
+                ->paginate($perPage);
+
+            return SongResource::collection($songs->appends($request->query()))->response()->getData(true);
+        });
+
+        return response()->json($data);
     }
 
     public function store(StoreSongRequest $request)
@@ -32,11 +39,11 @@ class SongController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('audio')) {
-            $data['audio_path'] = $request->file('audio')->store('songs/audio', 'public');
+            $data['audio_path'] = $this->uploads->storePublicFile($request->file('audio'), 'songs/audio');
         }
 
         if ($request->hasFile('cover')) {
-            $data['cover_path'] = $request->file('cover')->store('songs/covers', 'public');
+            $data['cover_path'] = $this->uploads->storePublicFile($request->file('cover'), 'songs/covers');
         }
 
         $song = Song::create($data);
@@ -46,7 +53,13 @@ class SongController extends Controller
 
     public function show(Song $song)
     {
-        return new SongResource($song->load(['artist', 'album']));
+        $cacheKey = sprintf('songs.show.%s.%s', $song->id, $song->updated_at?->timestamp);
+
+        $data = Cache::remember($cacheKey, now()->addMinutes(30), function () use ($song) {
+            return (new SongResource($song->load(['artist', 'album'])))->response()->getData(true);
+        });
+
+        return response()->json($data);
     }
 
     public function update(UpdateSongRequest $request, Song $song)
@@ -54,17 +67,11 @@ class SongController extends Controller
         $data = $request->validated();
 
         if ($request->hasFile('audio')) {
-            if ($song->audio_path) {
-                Storage::disk('public')->delete($song->audio_path);
-            }
-            $data['audio_path'] = $request->file('audio')->store('songs/audio', 'public');
+            $data['audio_path'] = $this->uploads->replacePublicFile($song->audio_path, $request->file('audio'), 'songs/audio');
         }
 
         if ($request->hasFile('cover')) {
-            if ($song->cover_path) {
-                Storage::disk('public')->delete($song->cover_path);
-            }
-            $data['cover_path'] = $request->file('cover')->store('songs/covers', 'public');
+            $data['cover_path'] = $this->uploads->replacePublicFile($song->cover_path, $request->file('cover'), 'songs/covers');
         }
 
         $song->update($data);
@@ -74,13 +81,8 @@ class SongController extends Controller
 
     public function destroy(Song $song)
     {
-        if ($song->audio_path) {
-            Storage::disk('public')->delete($song->audio_path);
-        }
-
-        if ($song->cover_path) {
-            Storage::disk('public')->delete($song->cover_path);
-        }
+        $this->uploads->deletePublicFile($song->audio_path);
+        $this->uploads->deletePublicFile($song->cover_path);
 
         $song->delete();
 
