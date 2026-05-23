@@ -56,15 +56,15 @@ export default function Artist() {
       {/* Banner Section */}
       <div className="relative overflow-hidden rounded-3xl border border-slate-700">
         {/* Banner Background */}
-        <div className="relative h-64 w-full bg-gradient-to-br from-indigo-600 to-purple-600">
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
+        <div className="relative h-64 w-full bg-linear-to-br from-indigo-600 to-purple-600">
+          <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
         </div>
 
         {/* Artist Info Overlay */}
         <div className="relative -mt-24 space-y-6 px-8 pb-8">
           {/* Avatar */}
           <div className="flex items-end gap-6">
-            <div className="flex h-48 w-48 items-center justify-center rounded-2xl border-4 border-slate-950 bg-gradient-to-br from-indigo-600 to-purple-600 shadow-2xl shadow-black/50">
+            <div className="flex h-48 w-48 items-center justify-center rounded-2xl border-4 border-slate-950 bg-linear-to-br from-indigo-600 to-purple-600 shadow-2xl shadow-black/50">
               <svg className="h-24 w-24 text-white/70" fill="currentColor" viewBox="0 0 24 24">
                 <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z" />
               </svg>
