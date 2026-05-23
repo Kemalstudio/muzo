@@ -163,7 +163,7 @@ export default function AddToPlaylistModal({ track, isOpen, onClose }) {
                             <button
                                 onClick={handleCreateAndAdd}
                                 disabled={!newPlaylistName.trim() || loading}
-                                className="flex-1 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 px-3 py-2 text-sm font-semibold text-white transition hover:shadow-lg hover:shadow-indigo-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
+                                className="flex-1 rounded-lg bg-linear-to-r from-indigo-600 to-purple-600 px-3 py-2 text-sm font-semibold text-white transition hover:shadow-lg hover:shadow-indigo-500/50 disabled:opacity-50 disabled:cursor-not-allowed"
                             >
                                 {loading ? "Creating..." : "Create"}
                             </button>
