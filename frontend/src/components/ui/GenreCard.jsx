@@ -20,7 +20,7 @@ export default function GenreCard({ genre }) {
 
   return (
     <Link to={`/genre/${genre.id}`}>
-      <div className={`group relative overflow-hidden rounded-2xl bg-gradient-to-br ${colorGradient} p-6 transition duration-300 hover:shadow-lg hover:shadow-black/50`}>
+      <div className={`group relative overflow-hidden rounded-2xl bg-linear-to-br ${colorGradient} p-6 transition duration-300 hover:shadow-lg hover:shadow-black/50`}>
         <div className="relative z-10">
           <div className="mb-4">
             <svg
