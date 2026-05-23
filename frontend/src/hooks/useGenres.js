@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { fetchGenres } from '../services/genreService'
 
+const normalizeArray = (value) =>
+  Array.isArray(value) ? value : Array.isArray(value?.data) ? value.data : []
+
 export default function useGenres() {
   const [genres, setGenres] = useState([])
   const [loading, setLoading] = useState(true)
@@ -12,7 +15,7 @@ export default function useGenres() {
     fetchGenres()
       .then((data) => {
         if (!mounted) return
-        setGenres(data)
+        setGenres(normalizeArray(data))
       })
       .catch((err) => {
         if (!mounted) return
