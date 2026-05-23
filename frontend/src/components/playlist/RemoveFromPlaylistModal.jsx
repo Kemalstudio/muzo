@@ -1,6 +1,7 @@
 import { useState } from 'react'
-import { removeTrackFromPlaylist } from '../services/playlistService'
-import usePlaylistStore from '../store/usePlaylistStore'
+// ИСПРАВЛЕН ПУТЬ (../../) и переименован импорт API, чтобы не было конфликта имен
+import { removeTrackFromPlaylist as apiRemoveTrack } from '../../services/playlistService'
+import usePlaylistStore from '../../store/usePlaylistStore'
 
 export default function RemoveFromPlaylistModal({
   track,
@@ -9,6 +10,7 @@ export default function RemoveFromPlaylistModal({
   onClose,
   onRemove,
 }) {
+  // Достаем функцию из стора
   const { removeTrackFromPlaylist } = usePlaylistStore()
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
@@ -20,7 +22,10 @@ export default function RemoveFromPlaylistModal({
     setError(null)
 
     try {
-      await removeTrackFromPlaylist(playlist.id, track.id)
+      // 1. Вызываем удаление на бэкенде (API)
+      await apiRemoveTrack(playlist.id, track.id)
+      
+      // 2. Удаляем из локального состояния (Store)
       removeTrackFromPlaylist(playlist.id, track.id)
 
       onRemove?.()
@@ -41,8 +46,7 @@ export default function RemoveFromPlaylistModal({
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-white">Remove from Playlist?</h2>
           <p className="mt-2 text-sm text-slate-400">
-            Are you sure you want to remove "{track.title}" from "
-            {playlist.name}"?
+            Are you sure you want to remove "{track.title}" from "{playlist.name}"?
           </p>
         </div>
 
