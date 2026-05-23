@@ -4,7 +4,7 @@ export default function RecentlyPlayedCard({ track, onPlay }) {
   return (
     <div className="group rounded-2xl border border-slate-700 bg-slate-950 p-4 transition hover:border-slate-600 hover:bg-slate-900">
       {/* Album Art */}
-      <div className="relative mb-3 aspect-square overflow-hidden rounded-lg bg-gradient-to-br from-slate-800 to-slate-900">
+      <div className="relative mb-3 aspect-square overflow-hidden rounded-lg bg-linear-to-br from-slate-800 to-slate-900">
         <div className="flex items-center justify-center h-full">
           <svg
             className="h-10 w-10 text-slate-600"
