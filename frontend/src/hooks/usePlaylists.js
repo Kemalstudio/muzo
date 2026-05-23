@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { fetchPlaylists } from '../services/playlistService'
 
+const normalizeArray = (value) =>
+  Array.isArray(value) ? value : Array.isArray(value?.data) ? value.data : []
+
 export default function usePlaylists() {
   const [playlists, setPlaylists] = useState([])
   const [loading, setLoading] = useState(true)
@@ -12,7 +15,7 @@ export default function usePlaylists() {
     fetchPlaylists()
       .then((data) => {
         if (!mounted) return
-        setPlaylists(data)
+        setPlaylists(normalizeArray(data))
       })
       .catch((err) => {
         if (!mounted) return
