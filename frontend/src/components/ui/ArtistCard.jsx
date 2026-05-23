@@ -4,9 +4,9 @@ import Button from './Button'
 export default function ArtistCard({ artist, onPlay }) {
   return (
     <Link to={`/artist/${artist.id}`}>
-      <div className="group rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-900 to-slate-950 p-6 transition duration-300 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20">
+      <div className="group rounded-3xl border border-slate-700 bg-linear-to-br from-slate-900 to-slate-950 p-6 transition duration-300 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20">
         {/* Artist Avatar Placeholder */}
-        <div className="mb-4 aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-indigo-600 to-purple-600">
+        <div className="mb-4 aspect-square overflow-hidden rounded-2xl bg-linear-to-br from-indigo-600 to-purple-600">
           <div className="flex h-full items-center justify-center">
             <svg
               className="h-16 w-16 text-white/60"
