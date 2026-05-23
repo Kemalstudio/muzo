@@ -6,9 +6,9 @@ export default function AlbumCard({ album, onPlay }) {
 
   return (
     <Link to={`/album/${album.id}`}>
-      <div className="group rounded-3xl border border-slate-700 bg-gradient-to-br from-slate-900 to-slate-950 p-6 transition duration-300 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20">
+      <div className="group rounded-3xl border border-slate-700 bg-linear-to-br from-slate-900 to-slate-950 p-6 transition duration-300 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20">
         {/* Album Cover Placeholder */}
-        <div className="mb-4 aspect-square overflow-hidden rounded-2xl bg-gradient-to-br from-orange-600 to-red-600">
+        <div className="mb-4 aspect-square overflow-hidden rounded-2xl bg-linear-to-br from-orange-600 to-red-600">
           <div className="flex h-full items-center justify-center">
             <svg
               className="h-16 w-16 text-white/60"
