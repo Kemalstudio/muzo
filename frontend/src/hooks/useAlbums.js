@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { fetchAlbums } from '../services/albumService'
 
+const normalizeArray = (value) =>
+  Array.isArray(value) ? value : Array.isArray(value?.data) ? value.data : []
+
 export default function useAlbums() {
   const [albums, setAlbums] = useState([])
   const [loading, setLoading] = useState(true)
@@ -12,7 +15,7 @@ export default function useAlbums() {
     fetchAlbums()
       .then((data) => {
         if (!mounted) return
-        setAlbums(data)
+        setAlbums(normalizeArray(data))
       })
       .catch((err) => {
         if (!mounted) return
