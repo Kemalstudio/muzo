@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { fetchTracks } from '../services/trackService'
 
+const normalizeArray = (value) =>
+  Array.isArray(value) ? value : Array.isArray(value?.data) ? value.data : []
+
 export default function useTracks() {
   const [tracks, setTracks] = useState([])
   const [loading, setLoading] = useState(true)
@@ -12,7 +15,7 @@ export default function useTracks() {
     fetchTracks()
       .then((data) => {
         if (!mounted) return
-        setTracks(data)
+        setTracks(normalizeArray(data))
       })
       .catch((err) => {
         if (!mounted) return
