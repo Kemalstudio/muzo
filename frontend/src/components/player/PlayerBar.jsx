@@ -66,7 +66,7 @@ export default function PlayerBar() {
             className="group relative flex-1 h-1 bg-slate-700 rounded-full cursor-pointer hover:h-2 transition-all"
           >
             <div
-              className="h-full bg-gradient-to-r from-indigo-600 to-purple-600 rounded-full transition-all"
+              className="h-full bg-linear-to-r from-indigo-600 to-purple-600 rounded-full transition-all"
               style={{ width: `${progress}%` }}
             ></div>
             <div
@@ -85,7 +85,7 @@ export default function PlayerBar() {
         {/* Now Playing Info */}
         <div className="flex items-center gap-4 flex-1 min-w-0">
           {/* Album Art */}
-          <div className="flex-shrink-0 h-14 w-14 rounded-lg bg-gradient-to-br from-indigo-600 to-purple-600 shadow-lg flex items-center justify-center">
+          <div className="flex-shrink-0 h-14 w-14 rounded-lg bg-linear-to-br from-indigo-600 to-purple-600 shadow-lg flex items-center justify-center">
             {current ? (
               <svg
                 className="h-7 w-7 text-white/70"
@@ -146,7 +146,7 @@ export default function PlayerBar() {
           <button
             onClick={togglePlayPause}
             disabled={!current}
-            className="p-3 rounded-full bg-gradient-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:shadow-indigo-500/50 disabled:opacity-50 disabled:cursor-not-allowed transition disabled:hover:shadow-none"
+            className="p-3 rounded-full bg-linear-to-r from-indigo-600 to-purple-600 text-white hover:shadow-lg hover:shadow-indigo-500/50 disabled:opacity-50 disabled:cursor-not-allowed transition disabled:hover:shadow-none"
             title={isPlaying ? 'Pause' : 'Play'}
           >
             {isPlaying ? (
