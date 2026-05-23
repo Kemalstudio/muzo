@@ -1,6 +1,9 @@
 import { useEffect, useState } from 'react'
 import { fetchArtists } from '../services/artistService'
 
+const normalizeArray = (value) =>
+  Array.isArray(value) ? value : Array.isArray(value?.data) ? value.data : []
+
 export default function useArtists() {
   const [artists, setArtists] = useState([])
   const [loading, setLoading] = useState(true)
@@ -12,7 +15,7 @@ export default function useArtists() {
     fetchArtists()
       .then((data) => {
         if (!mounted) return
-        setArtists(data)
+        setArtists(normalizeArray(data))
       })
       .catch((err) => {
         if (!mounted) return
