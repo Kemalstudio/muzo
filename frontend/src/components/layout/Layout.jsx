@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import { Outlet } from 'react-router-dom' // Импортируем Outlet отсюда
+import { Outlet } from 'react-router-dom'
 import PlayerBar from '../player/PlayerBar'
 import Sidebar from './Sidebar'
 import Header from './Header'
@@ -16,40 +16,7 @@ export default function Layout() {
         <Sidebar />
 
         <main className="space-y-8">
-          <div className="glass-panel rounded-4xl p-6 ring-1 ring-white/5">
-            <div className="flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
-              <div>
-                <p className="text-sm uppercase tracking-[0.32em] text-slate-400">Good evening</p>
-                <h1 className="text-4xl font-semibold text-white">Premium playlists for your mood</h1>
-              </div>
-              <button className="glow-button rounded-full px-5 py-3 text-sm font-semibold text-white shadow-lg shadow-black/20">
-                Explore now
-              </button>
-            </div>
-
-            <div className="mt-6 grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-              <div className="glass-card p-5 anim-fade-up delay-100">
-                <p className="text-sm text-slate-400">Mood</p>
-                <p className="mt-4 text-lg font-semibold text-white">Chill Vibes</p>
-              </div>
-              <div className="glass-card p-5 anim-fade-up delay-200">
-                <p className="text-sm text-slate-400">For you</p>
-                <p className="mt-4 text-lg font-semibold text-white">Evening Drive</p>
-              </div>
-              <div className="glass-card p-5 anim-fade-up delay-100">
-                <p className="text-sm text-slate-400">Latest</p>
-                <p className="mt-4 text-lg font-semibold text-white">New Releases</p>
-              </div>
-              <div className="glass-card p-5 anim-fade-up delay-200">
-                <p className="text-sm text-slate-400">Focus</p>
-                <p className="mt-4 text-lg font-semibold text-white">Deep Work</p>
-              </div>
-            </div>
-          </div>
-
-          <section className="space-y-6">
-            <Outlet />
-          </section>
+          <Outlet />
         </main>
       </div>
 
