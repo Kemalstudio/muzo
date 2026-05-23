@@ -3,11 +3,11 @@ import LikeButton from '../favorites/LikeButton'
 
 export default function TrendingSongCard({ track, onPlay, rank }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-slate-700 bg-gradient-to-br from-slate-900 to-slate-950 transition duration-300 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20">
+    <div className="group relative overflow-hidden rounded-2xl border border-slate-700 bg-linear-to-br from-slate-900 to-slate-950 transition duration-300 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20">
       <div className="flex h-full flex-col p-5">
         {/* Rank Badge */}
         <div className="mb-4 flex items-start justify-between">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-gradient-to-br from-indigo-600 to-purple-600">
+          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-indigo-600 to-purple-600">
             <span className="text-sm font-bold text-white">#{rank}</span>
           </div>
           <LikeButton track={track} size="sm" />
