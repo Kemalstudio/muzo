@@ -3,23 +3,19 @@
   array (
     0 => 'Laravel\\Pail\\PailServiceProvider',
     1 => 'Laravel\\Sail\\SailServiceProvider',
-    2 => 'Laravel\\Sanctum\\SanctumServiceProvider',
-    3 => 'Laravel\\Tinker\\TinkerServiceProvider',
-    4 => 'Carbon\\Laravel\\ServiceProvider',
-    5 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    6 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    7 => 'App\\Providers\\AppServiceProvider',
-    8 => 'App\\Providers\\AuthServiceProvider',
+    2 => 'Laravel\\Tinker\\TinkerServiceProvider',
+    3 => 'Carbon\\Laravel\\ServiceProvider',
+    4 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    5 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    6 => 'App\\Providers\\AppServiceProvider',
   ),
   'eager' => 
   array (
     0 => 'Laravel\\Pail\\PailServiceProvider',
-    1 => 'Laravel\\Sanctum\\SanctumServiceProvider',
-    2 => 'Carbon\\Laravel\\ServiceProvider',
-    3 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
-    4 => 'Termwind\\Laravel\\TermwindServiceProvider',
-    5 => 'App\\Providers\\AppServiceProvider',
-    6 => 'App\\Providers\\AuthServiceProvider',
+    1 => 'Carbon\\Laravel\\ServiceProvider',
+    2 => 'NunoMaduro\\Collision\\Adapters\\Laravel\\CollisionServiceProvider',
+    3 => 'Termwind\\Laravel\\TermwindServiceProvider',
+    4 => 'App\\Providers\\AppServiceProvider',
   ),
   'deferred' => 
   array (
