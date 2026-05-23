@@ -1,4 +1,5 @@
-import { Outlet, useState } from 'react'
+import { useState } from 'react'
+import { Outlet } from 'react-router-dom' // Импортируем Outlet отсюда
 import PlayerBar from '../player/PlayerBar'
 import Sidebar from './Sidebar'
 import Header from './Header'
