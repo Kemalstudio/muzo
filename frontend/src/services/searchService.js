@@ -46,3 +46,7 @@ export async function searchGenres(query) {
   })
   return response.data
 }
+
+
+
+

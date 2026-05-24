@@ -16,11 +16,11 @@ const getSafeArray = (data) => {
 }
 
 const friendActivity = [
-  { name: 'Amber Holmes', track: 'Dutch Kiss • Inner Mix', accent: 'bg-success' },
-  { name: 'Mia Jones', track: 'Ash • White Desert', accent: 'bg-warning' },
-  { name: 'Maria Diaz', track: 'PK • Parachute', accent: 'bg-danger' },
-  { name: 'Milton Heig', track: 'Dutch Kiss • Inner Mix', accent: 'bg-info' },
-  { name: 'Dany Brooks', track: 'PK • Parachute', accent: 'bg-primary' },
+  { name: 'Amber Holmes', track: 'Dutch Kiss • Inner Mix', accent: 'bg-green-600' },
+  { name: 'Mia Jones', track: 'Ash • White Desert', accent: 'bg-amber-500' },
+  { name: 'Maria Diaz', track: 'PK • Parachute', accent: 'bg-rose-500' },
+  { name: 'Milton Heig', track: 'Dutch Kiss • Inner Mix', accent: 'bg-cyan-500' },
+  { name: 'Dany Brooks', track: 'PK • Parachute', accent: 'bg-indigo-600' },
 ]
 
 const fallbackCards = [
@@ -78,16 +78,18 @@ export default function Home() {
   return (
     <div className="spotify-page container-fluid px-0 px-xl-3">
       <section className="mb-5 px-3 px-xl-0">
-        <div className="d-flex flex-column flex-lg-row align-items-start align-items-lg-center justify-content-between gap-3">
-          <div>
-            <p className="text-uppercase text-secondary small mb-2">Welcome back</p>
-            <h1 className="display-6 fw-bold text-white mb-2">Your next music experience</h1>
-            <p className="text-secondary mb-0">A sleek, modern dashboard with premium cards, live activity, and seamless playback.</p>
-          </div>
-          <div className="d-flex flex-wrap gap-2">
-            <button className="btn btn-outline-light btn-sm rounded-pill px-4">Minimal</button>
-            <button className="btn btn-outline-light btn-sm rounded-pill px-4">House</button>
-            <button className="btn btn-outline-light btn-sm rounded-pill px-4">Filters</button>
+        <div className="spotify-card p-4 p-xl-5 rounded-4">
+          <div className="flex flex-col flex-lg-row items-start lg:items-center justify-between gap-3">
+            <div className="max-w-3xl">
+              <span className="badge-soft rounded-full py-2 px-3 text-uppercase letter-spacing-sm mb-3 inline-block">Welcome back</span>
+              <h1 className="display-6 fw-bold text-white mb-3">Your next music experience</h1>
+              <p className="text-secondary mb-0">A polished dark interface with premium playlists, live updates and seamless playback designed for modern listeners.</p>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              <button className="spotify-btn spotify-btn-secondary px-4 text-sm">Minimal</button>
+              <button className="spotify-btn spotify-btn-secondary px-4 text-sm">House</button>
+              <button className="spotify-btn spotify-btn-secondary px-4 text-sm">Chill</button>
+            </div>
           </div>
         </div>
       </section>
@@ -95,16 +97,16 @@ export default function Home() {
       <section className="row gx-3 gy-3 mb-4 px-3 px-xl-0">
         {heroDisplay.map((card) => (
           <div key={card.title} className="col-12 col-md-6 col-xl-3">
-            <div className={`spotify-hero-card ${card.accent} d-flex flex-column justify-content-between p-4 text-white rounded-4 shadow-lg`}>
+            <div className={`spotify-hero-card ${card.accent} flex flex-col justify-between p-4 text-white rounded-4 shadow-lg`}>
               <div className="mb-3">
-                <span className="badge bg-dark bg-opacity-50 text-white rounded-pill mb-2 d-inline-flex align-items-center gap-2">
-                  <span className="dot rounded-circle bg-white/75"></span>
+                <span className="badge-soft bg-black bg-opacity-50 text-white rounded-full mb-2 inline-flex items-center gap-2">
+                  <span className="dot rounded-full bg-white/75"></span>
                   {card.label}
                 </span>
                 <h3 className="h5 fw-bold mb-2">{card.title}</h3>
-                <p className="text-white-75 mb-0">{card.description}</p>
+                <p className="text-secondary mb-0">{card.description}</p>
               </div>
-              <button type="button" onClick={card.action} className="btn btn-light btn-sm rounded-pill px-4 text-black fw-semibold mt-3">
+              <button type="button" onClick={card.action} className="spotify-btn spotify-btn-primary px-4 text-sm font-semibold mt-3">
                 Play
               </button>
             </div>
@@ -115,12 +117,12 @@ export default function Home() {
       <section className="row gx-3 gy-4 px-3 px-xl-0">
         <div className="col-xl-8">
           <div className="spotify-card p-4 mb-4">
-            <div className="d-flex flex-column flex-md-row align-items-start align-items-md-center justify-content-between gap-3 mb-4">
+            <div className="flex flex-col flex-md-row items-start align-items-md-center justify-between gap-3 mb-4">
               <div>
                 <p className="text-secondary small text-uppercase mb-1">Tracks of the Week</p>
                 <h2 className="h4 fw-bold text-white mb-0">Latest hits and burning playlists</h2>
               </div>
-              <Link to="/explore" className="btn btn-outline-light btn-sm rounded-pill px-4">
+              <Link to="/explore" className="spotify-btn spotify-btn-secondary px-4 text-sm">
                 See all
               </Link>
             </div>
@@ -142,15 +144,15 @@ export default function Home() {
                     onClick={() => play(track)}
                     className="list-group-item list-group-item-action bg-transparent border-0 px-0 py-3 text-white rounded-4 mb-2 spotify-list-item"
                   >
-                    <div className="d-flex align-items-center justify-content-between gap-3">
+                    <div className="flex items-center justify-between gap-3">
                       <div>
                         <div className="small text-secondary mb-1">#{index + 1}</div>
-                        <h3 className="h6 fw-semibold mb-1 text-white">{track.title}</h3>
+                        <h3 className="h6 font-semibold mb-1 text-white">{track.title}</h3>
                         <p className="mb-0 text-secondary">{track.artist || 'Unknown artist'}</p>
                       </div>
-                      <div className="d-flex align-items-center gap-2">
-                        <span className="badge bg-white bg-opacity-10 text-white rounded-pill py-2 px-3">{track.playCount || playCounts[index]}k</span>
-                        <span className="btn btn-sm btn-outline-light rounded-circle p-2">
+                      <div className="flex items-center gap-2">
+                        <span className="badge-soft bg-white/10 text-white rounded-full py-2 px-3">{track.playCount || playCounts[index]}k</span>
+                        <span className="spotify-btn spotify-btn-secondary rounded-full p-2 text-sm">
                           ▶
                         </span>
                       </div>
@@ -165,12 +167,12 @@ export default function Home() {
             {playlistList.slice(0, 4).map((playlist, index) => (
               <div key={playlist.id || index} className="col-12 col-md-6">
                 <div className="spotify-card p-3 rounded-4 overflow-hidden position-relative">
-                  <div className="d-flex flex-column gap-3">
-                    <span className="badge bg-white bg-opacity-10 text-white rounded-pill py-2 px-3 align-self-start">Playlist</span>
-                    <h3 className="h6 fw-semibold text-white mb-1">{playlist.name}</h3>
+                  <div className="flex flex-col gap-3">
+                    <span className="badge-soft bg-white/10 text-white rounded-full py-2 px-3 align-self-start">Playlist</span>
+                    <h3 className="h6 font-semibold text-white mb-1">{playlist.name}</h3>
                     <p className="mb-0 text-secondary">{playlist.description || 'Curated collection for your next session.'}</p>
                   </div>
-                  <div className="hero-accent position-absolute top-0 inset-e-0 rounded-circle opacity-50"></div>
+                  <div className="hero-accent position-absolute top-0 inset-e-0 rounded-full opacity-50"></div>
                 </div>
               </div>
             ))}
@@ -179,28 +181,28 @@ export default function Home() {
 
         <div className="col-xl-4">
           <div className="spotify-card p-4 rounded-4">
-            <div className="d-flex align-items-center justify-content-between mb-4">
+            <div className="flex items-center justify-between mb-4">
               <div>
                 <p className="text-secondary small text-uppercase mb-1">Live</p>
                 <h3 className="h5 fw-bold mb-0 text-white">Friends Activity</h3>
               </div>
-              <button className="btn btn-sm btn-outline-light rounded-pill px-3">View all</button>
+              <button className="spotify-btn spotify-btn-secondary px-3 text-sm">View all</button>
             </div>
 
             <div className="list-group list-group-flush">
               {friendActivity.map((friend, index) => (
                 <div key={`${friend.name}-${index}`} className="list-group-item bg-transparent border-0 px-0 py-3 spotify-list-item rounded-4 mb-2">
-                  <div className="d-flex align-items-center justify-content-between gap-3">
-                    <div className="d-flex align-items-center gap-3">
-                      <div className={`rounded-circle ${friend.accent} d-flex align-items-center justify-content-center text-black fw-bold`} style={{ width: 44, height: 44 }}>
+                  <div className="flex items-center justify-between gap-3">
+                    <div className="flex items-center gap-3">
+                      <div className={`rounded-full ${friend.accent} flex items-center justify-center text-black fw-bold`} style={{ width: 44, height: 44 }}>
                         {friend.name.split(' ').map((word) => word[0]).join('').slice(0, 2)}
                       </div>
                       <div>
-                        <p className="mb-1 fw-semibold text-white">{friend.name}</p>
+                        <p className="mb-1 font-semibold text-white">{friend.name}</p>
                         <p className="mb-0 small text-secondary">{friend.track}</p>
                       </div>
                     </div>
-                    <span className="badge bg-success bg-opacity-10 text-success rounded-pill py-2 px-3">Online</span>
+                    <span className="badge-soft bg-green-600 bg-opacity-10 text-green-400 rounded-full py-2 px-3">Online</span>
                   </div>
                 </div>
               ))}
@@ -209,19 +211,19 @@ export default function Home() {
 
           {recentTracks.length > 0 && (
             <div className="spotify-card p-4 rounded-4 mt-4">
-              <p className="fw-semibold text-white mb-3">Continue listening</p>
+              <p className="font-semibold text-white mb-3">Continue listening</p>
               <div className="list-group list-group-flush">
                 {recentTracks.slice(0, 3).map((track, index) => (
                   <div
                     key={`recent-${index}`}
                     className="list-group-item bg-transparent border-0 px-0 py-3 spotify-list-item rounded-4 mb-2"
                   >
-                    <div className="d-flex align-items-center justify-content-between gap-3">
+                    <div className="flex items-center justify-between gap-3">
                       <div>
-                        <h4 className="h6 fw-semibold text-white mb-1">{track.title || track.name || 'Unknown Track'}</h4>
+                        <h4 className="h6 font-semibold text-white mb-1">{track.title || track.name || 'Unknown Track'}</h4>
                         <p className="mb-0 text-secondary">{track.artist || track.artist_name || 'Unknown artist'}</p>
                       </div>
-                      <button type="button" onClick={() => play(track)} className="btn btn-outline-light btn-sm rounded-circle p-2">
+                      <button type="button" onClick={() => play(track)} className="spotify-btn spotify-btn-secondary rounded-full p-2 text-sm">
                         ▶
                       </button>
                     </div>
@@ -232,25 +234,25 @@ export default function Home() {
           )}
 
           <div className="spotify-card p-4 rounded-4 mt-4 text-secondary">
-            <p className="fw-semibold text-white mb-2">Quick filters</p>
-            <div className="d-flex flex-wrap gap-2">
-              <button className="btn btn-outline-light btn-sm rounded-pill px-3">Pop</button>
-              <button className="btn btn-outline-light btn-sm rounded-pill px-3">Hip-hop</button>
-              <button className="btn btn-outline-light btn-sm rounded-pill px-3">Chill</button>
-              <button className="btn btn-outline-light btn-sm rounded-pill px-3">Techno</button>
+            <p className="font-semibold text-white mb-2">Quick filters</p>
+            <div className="flex flex-wrap gap-2">
+              <button className="spotify-btn spotify-btn-secondary px-3 text-sm">Pop</button>
+              <button className="spotify-btn spotify-btn-secondary px-3 text-sm">Hip-hop</button>
+              <button className="spotify-btn spotify-btn-secondary px-3 text-sm">Chill</button>
+              <button className="spotify-btn spotify-btn-secondary px-3 text-sm">Techno</button>
             </div>
           </div>
         </div>
       </section>
 
       <section className="px-3 px-xl-0 pb-5">
-        <div className="spotify-card p-4 rounded-4 bg-black bg-opacity-80 border border-white/10 shadow-lg">
-          <div className="d-flex flex-column flex-md-row align-items-center justify-content-between gap-3">
+        <div className="spotify-card p-4 rounded-4 border border-white/10 shadow-lg">
+          <div className="flex flex-col flex-md-row items-center justify-between gap-3">
             <div>
               <h3 className="h5 fw-bold text-white mb-1">Ready for a deeper session?</h3>
               <p className="mb-0 text-secondary">Explore the full catalog or create a fresh playlist from your favorites.</p>
             </div>
-            <Link to="/search" className="btn btn-light btn-sm rounded-pill px-4 text-black">
+            <Link to="/search" className="spotify-btn spotify-btn-primary px-4 text-sm">
               Discover now
             </Link>
           </div>
@@ -259,3 +261,6 @@ export default function Home() {
     </div>
   )
 }
+
+
+

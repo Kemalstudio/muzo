@@ -54,7 +54,7 @@ export default function Artist() {
       </button>
 
       {/* Banner Section */}
-      <div className="relative overflow-hidden rounded-3xl border border-slate-700">
+      <div className="spotify-hero-card spotify-card">
         {/* Banner Background */}
         <div className="relative h-64 w-full bg-linear-to-br from-indigo-600 to-purple-600">
           <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
@@ -118,7 +118,7 @@ export default function Artist() {
               <Button className="transition duration-300 hover:from-indigo-600 hover:to-purple-600">
                 Follow
               </Button>
-              <button className="rounded-full border border-slate-700 bg-slate-900/50 p-3 transition hover:border-indigo-500 hover:bg-slate-800">
+              <button className="spotify-btn spotify-btn-secondary p-3">
                 <svg
                   className="h-6 w-6 text-white"
                   fill="none"
@@ -156,7 +156,7 @@ export default function Artist() {
 
           {artistSongs.length > 6 && (
             <div className="flex justify-center pt-6">
-              <button className="rounded-full border border-indigo-600 px-8 py-3 font-semibold text-indigo-400 transition hover:bg-indigo-600/10">
+              <button className="spotify-btn spotify-btn-secondary px-8 py-3">
                 View all {artistSongs.length} songs
               </button>
             </div>
@@ -198,3 +198,7 @@ export default function Artist() {
     </div>
   )
 }
+
+
+
+

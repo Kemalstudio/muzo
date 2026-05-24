@@ -29,3 +29,7 @@ export async function clearHistory() {
   const response = await api.delete('/me/history')
   return response.data
 }
+
+
+
+

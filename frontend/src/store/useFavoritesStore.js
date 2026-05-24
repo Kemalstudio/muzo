@@ -68,3 +68,7 @@ const useFavoritesStore = create((set, get) => ({
 }))
 
 export default useFavoritesStore
+
+
+
+

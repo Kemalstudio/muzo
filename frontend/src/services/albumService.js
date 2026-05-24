@@ -9,3 +9,7 @@ export async function fetchAlbumById(id) {
   const response = await api.get(`/albums/${id}`)
   return response.data
 }
+
+
+
+

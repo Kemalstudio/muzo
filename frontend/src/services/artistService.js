@@ -9,3 +9,7 @@ export async function fetchArtistById(id) {
   const response = await api.get(`/artists/${id}`)
   return response.data
 }
+
+
+
+

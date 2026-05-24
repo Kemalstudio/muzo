@@ -80,7 +80,7 @@ export default function Album() {
             </button>
 
             {/* Album Header */}
-            <div className="relative overflow-hidden rounded-3xl border border-slate-700">
+            <div className="spotify-hero-card spotify-card">
                 {/* Banner Background */}
                 <div className="relative h-64 w-full bg-linear-to-br from-orange-600 to-red-600">
                     <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
@@ -154,7 +154,7 @@ export default function Album() {
                             >
                                 Play Album
                             </Button>
-                            <button className="rounded-full border border-slate-700 bg-slate-900/50 p-3 transition hover:border-indigo-500 hover:bg-slate-800">
+                            <button className="spotify-btn spotify-btn-secondary p-3">
                                 <svg
                                     className="h-6 w-6 text-white"
                                     fill="none"
@@ -231,3 +231,7 @@ export default function Album() {
         </div>
     );
 }
+
+
+
+

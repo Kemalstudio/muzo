@@ -53,7 +53,7 @@ export default function Genre() {
       </button>
 
       {/* Genre Header */}
-      <div className="relative overflow-hidden rounded-3xl border border-slate-700">
+      <div className="spotify-hero-card spotify-card">
         {/* Banner Background */}
         <div className="relative h-80 w-full bg-linear-to-br from-cyan-600 to-blue-600">
           <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
@@ -109,9 +109,9 @@ export default function Genre() {
             ))}
           </div>
 
-          {genreTracks.length > 9 && (
+            {genreTracks.length > 9 && (
             <div className="flex justify-center pt-6">
-              <button className="rounded-full border border-indigo-600 px-8 py-3 font-semibold text-indigo-400 transition hover:bg-indigo-600/10">
+              <button className="spotify-btn spotify-btn-secondary px-8 py-3">
                 View all {genreTracks.length} songs
               </button>
             </div>
@@ -121,7 +121,7 @@ export default function Genre() {
 
       {/* Empty State */}
       {genreTracks.length === 0 && (
-        <div className="rounded-2xl border border-slate-700 bg-slate-950 p-12 text-center">
+        <div className="spotify-card p-12 text-center">
           <svg
             className="mx-auto mb-4 h-16 w-16 text-slate-600"
             fill="none"
@@ -141,3 +141,7 @@ export default function Genre() {
     </div>
   )
 }
+
+
+
+

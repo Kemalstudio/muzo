@@ -50,3 +50,7 @@ export default function useSearch(initialQuery = '') {
 
   return { query, setQuery, results, loading, error }
 }
+
+
+
+

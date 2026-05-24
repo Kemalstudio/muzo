@@ -21,16 +21,16 @@ export default function Explore() {
   return (
     <div className="space-y-12">
       <div className="spotify-card p-5 rounded-4">
-        <div className="row g-4 align-items-center">
+        <div className="row g-4 items-center">
           <div className="col-lg-8">
-            <p className="text-uppercase fw-semibold text-secondary small mb-2">Discover</p>
+            <p className="text-uppercase font-semibold text-secondary small mb-2">Discover</p>
             <h1 className="display-5 fw-bold text-white mb-3">Explore Music</h1>
             <p className="lead text-secondary mb-0">
               Discover new genres, artists and albums within a polished dark interface that feels premium and modern.
             </p>
           </div>
           <div className="col-lg-4 text-lg-end">
-            <span className="badge bg-white bg-opacity-10 text-white rounded-pill py-2 px-3">Curated for you</span>
+            <span className="badge-soft bg-white/10 text-white rounded-full py-2 px-3">Curated for you</span>
           </div>
         </div>
       </div>
@@ -147,3 +147,7 @@ export default function Explore() {
     </div>
   )
 }
+
+
+
+

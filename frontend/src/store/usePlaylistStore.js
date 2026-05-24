@@ -1,4 +1,4 @@
-import create from 'zustand'
+import { create } from 'zustand'
 
 const usePlaylistStore = create((set, get) => ({
   userPlaylists: [],
@@ -56,3 +56,7 @@ const usePlaylistStore = create((set, get) => ({
 }))
 
 export default usePlaylistStore
+
+
+
+

@@ -27,7 +27,7 @@ export default function Library() {
           {library.map((item) => (
             <div key={item.id} className="col-12 col-md-6">
               <Card className="h-100">
-                <div className="fw-semibold text-white">{item.title}</div>
+                <div className="font-semibold text-white">{item.title}</div>
                 <div className="text-secondary">{item.artist}</div>
               </Card>
             </div>
@@ -37,3 +37,7 @@ export default function Library() {
     </div>
   )
 }
+
+
+
+

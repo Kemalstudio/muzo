@@ -109,9 +109,9 @@ export default function ProfilePage() {
     <div className="space-y-6">
       <SectionHeading title="Profile" subtitle="Update your display name, username, and avatar." />
 
-      <form onSubmit={handleSubmit} className="grid gap-6 rounded-3xl border border-slate-800 bg-slate-900 p-6">
+      <form onSubmit={handleSubmit} className="grid gap-6 spotify-card p-6">
         <div className="grid gap-4 md:grid-cols-[220px_minmax(0,1fr)]">
-          <div className="flex flex-col items-center gap-4 rounded-3xl border border-slate-800 bg-slate-950 p-6 text-center">
+          <div className="flex flex-col items-center gap-4 spotify-card text-center">
             <div className="relative h-28 w-28 overflow-hidden rounded-full bg-slate-800 text-5xl font-semibold text-white">
               {avatarPreview ? (
                 <img src={avatarPreview} alt="Avatar preview" className="h-full w-full object-cover" />
@@ -178,3 +178,7 @@ export default function ProfilePage() {
     </div>
   )
 }
+
+
+
+

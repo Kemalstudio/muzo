@@ -33,3 +33,7 @@ export default function useGenres() {
 
   return { genres, loading, error }
 }
+
+
+
+

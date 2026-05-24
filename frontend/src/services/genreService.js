@@ -9,3 +9,7 @@ export async function fetchGenreById(id) {
   const response = await api.get(`/genres/${id}`)
   return response.data
 }
+
+
+
+

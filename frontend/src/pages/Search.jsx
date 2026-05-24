@@ -34,20 +34,20 @@ export default function Search() {
   return (
     <div className="space-y-8">
       <div className="spotify-card p-5 rounded-4">
-        <div className="row g-4 align-items-center">
+        <div className="row g-4 items-center">
           <div className="col-md-8">
-            <p className="text-uppercase fw-semibold text-secondary small mb-2">Search</p>
+            <p className="text-uppercase font-semibold text-secondary small mb-2">Search</p>
             <h1 className="display-6 fw-bold text-white mb-3">Find the music you love</h1>
             <p className="text-secondary mb-0">Type any song, artist, album or genre to explore matching music across the library.</p>
           </div>
           <div className="col-md-4">
-            <div className="input-group spotify-card p-3 rounded-4 border-0 bg-slate-950 shadow-none">
+            <div className="input-group spotify-card p-3 rounded-4 border-0 shadow-none">
               <input
                 type="text"
                 value={query}
                 onChange={(e) => handleSearch(e.target.value)}
                 placeholder="Search songs, artists, albums, genres..."
-                className="form-control bg-transparent border-0 text-white placeholder-slate-500"
+                className="form-control bg-transparent border-0 text-white placeholder-slate-500 spotify-input"
               />
               <span className="input-group-text bg-transparent border-0 text-slate-500">
                 {loading ? (
@@ -211,3 +211,7 @@ export default function Search() {
     </div>
   )
 }
+
+
+
+

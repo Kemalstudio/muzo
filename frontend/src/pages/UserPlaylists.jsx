@@ -134,7 +134,7 @@ export default function UserPlaylists() {
       {/* Create Playlist Button */}
       <button
         onClick={() => setShowCreateDialog(true)}
-        className="rounded-2xl border-2 border-dashed border-slate-700 bg-slate-900/50 px-6 py-4 text-slate-300 transition hover:border-indigo-600 hover:bg-indigo-600/10 hover:text-white"
+        className="spotify-btn spotify-btn-secondary px-6 py-4"
       >
         <svg
           className="mb-2 inline-block h-6 w-6"
@@ -155,7 +155,7 @@ export default function UserPlaylists() {
       {/* Create/Edit Dialog */}
       {(showCreateDialog || editingId) && (
         <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-3xl border border-slate-700 bg-slate-950 p-6 shadow-2xl">
+          <div className="w-full max-w-md spotify-card p-6 shadow-2xl">
             <h2 className="mb-4 text-2xl font-bold text-white">
               {editingId ? 'Edit Playlist' : 'Create Playlist'}
             </h2>
@@ -203,7 +203,7 @@ export default function UserPlaylists() {
               <button
                 onClick={cancelEdit}
                 disabled={loading}
-                className="flex-1 rounded-lg border border-slate-600 bg-slate-800 px-4 py-2 font-semibold text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
+                className="spotify-btn spotify-btn-secondary flex-1"
               >
                 Cancel
               </button>
@@ -216,7 +216,7 @@ export default function UserPlaylists() {
                   }
                 }}
                 disabled={loading}
-                className="flex-1 rounded-lg bg-gradient-to-r from-indigo-600 to-purple-600 px-4 py-2 font-semibold text-white transition hover:shadow-lg hover:shadow-indigo-500/50 disabled:opacity-50"
+                className="spotify-btn spotify-btn-primary flex-1"
               >
                 {loading ? 'Saving...' : editingId ? 'Update' : 'Create'}
               </button>
@@ -227,8 +227,8 @@ export default function UserPlaylists() {
 
       {/* Delete Confirmation */}
       {deleteConfirm && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
-          <div className="w-full max-w-md rounded-3xl border border-slate-700 bg-slate-950 p-6 shadow-2xl">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm">
+          <div className="w-full max-w-md spotify-card p-6 shadow-2xl">
             <h2 className="mb-2 text-2xl font-bold text-white">Delete Playlist?</h2>
             <p className="mb-6 text-slate-400">
               This action cannot be undone. All songs in this playlist will be
@@ -239,14 +239,14 @@ export default function UserPlaylists() {
               <button
                 onClick={() => setDeleteConfirm(null)}
                 disabled={loading}
-                className="flex-1 rounded-lg border border-slate-600 bg-slate-800 px-4 py-2 font-semibold text-slate-300 transition hover:bg-slate-700 disabled:opacity-50"
+                className="spotify-btn spotify-btn-secondary flex-1"
               >
                 Cancel
               </button>
               <button
                 onClick={() => handleDeletePlaylist(deleteConfirm)}
                 disabled={loading}
-                className="flex-1 rounded-lg bg-rose-600 px-4 py-2 font-semibold text-white transition hover:bg-rose-700 disabled:opacity-50"
+                className="spotify-btn spotify-btn-primary flex-1"
               >
                 {loading ? 'Deleting...' : 'Delete'}
               </button>
@@ -258,13 +258,13 @@ export default function UserPlaylists() {
       {/* Playlists Grid */}
       {playlists.length > 0 ? (
         <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-          {playlists.map((playlist) => (
+            {playlists.map((playlist) => (
             <div
               key={playlist.id}
-              className="group rounded-2xl border border-slate-700 bg-gradient-to-br from-slate-900 via-slate-900 to-slate-900 p-6 transition hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20"
+              className="group spotify-card p-6 transition hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20"
             >
               {/* Thumbnail */}
-              <div className="relative mb-4 aspect-square overflow-hidden rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600">
+              <div className="relative mb-4 aspect-square overflow-hidden rounded-xl bg-linear-to-br from-indigo-600 to-purple-600">
                 <div className="flex items-center justify-center h-full">
                   <svg
                     className="h-16 w-16 text-white/50"
@@ -306,22 +306,22 @@ export default function UserPlaylists() {
               </p>
 
               {/* Actions */}
-              <div className="mt-4 flex gap-2 opacity-0 transition group-hover:opacity-100">
+                <div className="mt-4 flex gap-2 opacity-0 transition group-hover:opacity-100">
                 <button
                   onClick={() => navigate(`/playlist/${playlist.id}`)}
-                  className="flex-1 rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:border-indigo-500 hover:bg-slate-700 hover:text-white"
+                  className="spotify-btn spotify-btn-secondary flex-1"
                 >
                   View
                 </button>
                 <button
                   onClick={() => startEdit(playlist)}
-                  className="flex-1 rounded-lg border border-slate-600 bg-slate-800 px-3 py-2 text-sm font-semibold text-slate-300 transition hover:border-indigo-500 hover:bg-slate-700 hover:text-white"
+                  className="spotify-btn spotify-btn-secondary flex-1"
                 >
                   Edit
                 </button>
                 <button
                   onClick={() => setDeleteConfirm(playlist.id)}
-                  className="rounded-lg border border-rose-600/50 bg-rose-600/10 px-3 py-2 text-sm font-semibold text-rose-400 transition hover:border-rose-600 hover:bg-rose-600/20"
+                  className="spotify-btn spotify-btn-secondary"
                 >
                   <svg className="h-5 w-5" fill="currentColor" viewBox="0 0 20 20">
                     <path
@@ -359,3 +359,7 @@ export default function UserPlaylists() {
     </div>
   )
 }
+
+
+
+

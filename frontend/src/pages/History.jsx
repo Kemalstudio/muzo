@@ -101,7 +101,7 @@ export default function History() {
       {/* Stats Card */}
       {stats && allTracks.length > 0 && (
         <div className="grid gap-4 grid-cols-1 md:grid-cols-3">
-          <div className="rounded-2xl border border-slate-700 bg-slate-950/50 p-6">
+          <div className="spotify-card p-6">
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
               Total Plays
             </p>
@@ -109,7 +109,7 @@ export default function History() {
               {stats.total_plays}
             </p>
           </div>
-          <div className="rounded-2xl border border-slate-700 bg-slate-950/50 p-6">
+          <div className="spotify-card p-6">
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
               Unique Songs
             </p>
@@ -117,7 +117,7 @@ export default function History() {
               {stats.unique_tracks}
             </p>
           </div>
-          <div className="rounded-2xl border border-slate-700 bg-slate-950/50 p-6">
+          <div className="spotify-card p-6">
             <p className="text-xs font-semibold uppercase tracking-wider text-slate-500">
               Top Track
             </p>
@@ -145,10 +145,10 @@ export default function History() {
                   const track = item.track
                   if (!track) return null
 
-                  return (
+                    return (
                     <div
                       key={`${group.date}-${track.id}-${trackIdx}`}
-                      className="group grid grid-cols-1 lg:grid-cols-[50px_1fr_250px_100px_120px] gap-4 rounded-lg border border-slate-700/40 bg-slate-950/40 p-4 transition hover:border-slate-600 hover:bg-slate-900/60"
+                      className="spotify-list-item group grid grid-cols-1 lg:grid-cols-[50px_1fr_250px_100px_120px] gap-4 rounded-lg border border-slate-700/40 bg-slate-950/40 p-4 transition hover:border-slate-600 hover:bg-slate-900/60"
                     >
                       {/* Track Number */}
                       <div className="hidden lg:flex items-center">
@@ -219,7 +219,7 @@ export default function History() {
           ))}
         </div>
       ) : (
-        <div className="rounded-2xl border border-slate-700 bg-slate-950 p-16 text-center">
+        <div className="spotify-card p-16 text-center">
           <svg
             className="mx-auto mb-6 h-20 w-20 text-slate-600"
             fill="none"
@@ -242,3 +242,7 @@ export default function History() {
     </div>
   )
 }
+
+
+
+

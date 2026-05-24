@@ -26,7 +26,7 @@ export default function RegisterPage() {
 
   return (
     <div className="space-y-8">
-      <div className="rounded-3xl border border-slate-800 bg-slate-950/95 p-8 shadow-2xl shadow-black/30 backdrop-blur-xl">
+      <div className="spotify-card rounded-3xl p-8 shadow-2xl shadow-black/30 backdrop-blur-xl">
         <div className="space-y-3">
           <p className="text-sm uppercase tracking-[0.32em] text-indigo-400/80">Create your experience</p>
           <h1 className="text-4xl font-semibold text-white">Join MUZO today</h1>

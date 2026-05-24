@@ -73,7 +73,7 @@ export default function Favorites() {
 
       {/* Hero Section with Controls */}
       {favorites.length > 0 && (
-        <div className="relative overflow-hidden rounded-3xl border border-slate-700">
+        <div className="spotify-hero-card spotify-card">
           {/* Gradient Background */}
           <div className="relative h-40 w-full bg-linear-to-br from-rose-600 via-rose-600 to-pink-600">
             <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
@@ -121,7 +121,7 @@ export default function Favorites() {
                     play(favorites)
                   }
                 }}
-                className="rounded-full bg-linear-to-r from-rose-600 to-pink-600 px-8 py-3 font-semibold text-white transition hover:shadow-lg hover:shadow-rose-600/50"
+                className="spotify-btn spotify-btn-primary px-8 py-3"
               >
                 <svg
                   className="mr-2 inline-block h-5 w-5"
@@ -132,7 +132,7 @@ export default function Favorites() {
                 </svg>
                 Play All
               </button>
-              <button className="rounded-full border border-slate-700 bg-slate-900/50 p-3 transition hover:border-rose-500 hover:bg-slate-800">
+              <button className="spotify-btn spotify-btn-secondary p-3">
                 <svg
                   className="h-6 w-6 text-white"
                   fill="none"
@@ -192,7 +192,7 @@ export default function Favorites() {
           {sortedFavorites.map((track, index) => (
             <div
               key={track.id}
-              className="group grid grid-cols-1 lg:grid-cols-[50px_1fr_250px_100px_60px] gap-4 rounded-lg border border-slate-700/40 bg-slate-950/40 p-4 transition hover:border-rose-500 hover:bg-slate-900/60"
+              className="spotify-list-item group grid grid-cols-1 lg:grid-cols-[50px_1fr_250px_100px_60px] gap-4 rounded-lg border border-slate-700/40 bg-slate-950/40 p-4 transition hover:border-rose-500 hover:bg-slate-900/60"
             >
               {/* Track Number */}
               <div className="hidden lg:flex items-center">
@@ -259,7 +259,7 @@ export default function Favorites() {
           ))}
         </div>
       ) : (
-        <div className="rounded-2xl border border-slate-700 bg-slate-950 p-16 text-center">
+        <div className="spotify-card p-16 text-center">
           <svg
             className="mx-auto mb-6 h-20 w-20 text-slate-600"
             fill="none"
@@ -282,3 +282,7 @@ export default function Favorites() {
     </div>
   )
 }
+
+
+
+
