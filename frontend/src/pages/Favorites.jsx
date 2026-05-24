@@ -75,8 +75,8 @@ export default function Favorites() {
       {favorites.length > 0 && (
         <div className="relative overflow-hidden rounded-3xl border border-slate-700">
           {/* Gradient Background */}
-          <div className="relative h-40 w-full bg-gradient-to-br from-rose-600 via-rose-600 to-pink-600">
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
+          <div className="relative h-40 w-full bg-linear-to-br from-rose-600 via-rose-600 to-pink-600">
+            <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
           </div>
 
           {/* Content Overlay */}
@@ -84,7 +84,7 @@ export default function Favorites() {
             {/* Title */}
             <div className="flex items-end gap-6">
               {/* Icon */}
-              <div className="h-40 w-40 flex-shrink-0 overflow-hidden rounded-2xl border-4 border-slate-950 bg-gradient-to-br from-rose-600 to-pink-600 shadow-2xl shadow-black/50">
+              <div className="h-40 w-40 flex-shrink-0 overflow-hidden rounded-2xl border-4 border-slate-950 bg-linear-to-br from-rose-600 to-pink-600 shadow-2xl shadow-black/50">
                 <div className="flex h-full items-center justify-center">
                   <svg
                     className="h-20 w-20 text-white/60"
@@ -121,7 +121,7 @@ export default function Favorites() {
                     play(favorites)
                   }
                 }}
-                className="rounded-full bg-gradient-to-r from-rose-600 to-pink-600 px-8 py-3 font-semibold text-white transition hover:shadow-lg hover:shadow-rose-600/50"
+                className="rounded-full bg-linear-to-r from-rose-600 to-pink-600 px-8 py-3 font-semibold text-white transition hover:shadow-lg hover:shadow-rose-600/50"
               >
                 <svg
                   className="mr-2 inline-block h-5 w-5"
