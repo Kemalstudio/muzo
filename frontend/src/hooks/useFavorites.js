@@ -41,3 +41,7 @@ export default function useFavorites() {
     error: useFavoritesStore((state) => state.error),
   }
 }
+
+
+
+

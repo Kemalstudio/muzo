@@ -35,3 +35,7 @@ export default function useGenre(id) {
 
   return { genre, loading, error }
 }
+
+
+
+
