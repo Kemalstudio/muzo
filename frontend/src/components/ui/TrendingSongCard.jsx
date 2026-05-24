@@ -23,3 +23,6 @@ export default function TrendingSongCard({ track, onPlay, rank }) {
     </div>
   )
 }
+
+
+
