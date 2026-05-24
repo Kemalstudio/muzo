@@ -8,61 +8,61 @@ export default function Header({ mobileMenuOpen, toggleMobileMenu }) {
   const logout = useAuthStore((state) => state.logout)
 
   return (
-    <header className="sticky-top top-0 z-50 border-b border-white/10 bg-[rgba(7,10,18,0.92)] backdrop-blur-xl shadow-[0_16px_60px_-28px_rgba(0,0,0,0.75)] py-3">
-      <div className="container-fluid flex flex-wrap items-center gap-3">
-        <Link to="/" className="navbar-brand flex items-center gap-3 p-0 text-white">
-          <span className="badge-soft bg-linear-to-r from-indigo-500 to-cyan-400 text-black rounded-full py-2 px-3 shadow-glow">MUZO</span>
-          <div className="flex flex-col">
-            <span className="font-semibold">Music Studio</span>
-            <small className="text-secondary">Modern beats & premium playlists</small>
+    <header className="sticky top-0 z-50 border-b border-white/10 bg-black/60 backdrop-blur-xl shadow-glow py-4">
+      <div className="mx-auto flex max-w-[1600px] flex-wrap items-center gap-4 px-4 md:px-6 xl:px-0">
+        <Link to="/" className="flex items-center gap-3 text-white">
+          <span className="badge-glow text-sm uppercase tracking-[0.32em]">MUZO</span>
+          <div>
+            <p className="text-sm font-semibold mb-1">High-end streaming</p>
+            <p className="text-xs text-slate-400">Modern playlists, premium design</p>
           </div>
         </Link>
 
-        <div className="flex-1 hidden lg:flex px-2">
+        <div className="flex-1 hidden lg:block">
           <SearchBar />
         </div>
 
-        <div className="flex flex-wrap gap-2 items-center ml-auto">
-          <div className="hidden lg:flex gap-2">
-            <button className="spotify-btn spotify-btn-secondary px-3 py-2 text-sm">Minimal</button>
-            <button className="spotify-btn spotify-btn-secondary px-3 py-2 text-sm">House</button>
-            <button className="spotify-btn spotify-btn-secondary px-3 py-2 text-sm">Chill</button>
+        <div className="ml-auto flex flex-wrap items-center gap-3">
+          <div className="hidden lg:flex items-center gap-2">
+            <button className="spotify-btn spotify-btn-secondary text-sm">Minimal</button>
+            <button className="spotify-btn spotify-btn-secondary text-sm">House</button>
+            <button className="spotify-btn spotify-btn-secondary text-sm">Chill</button>
           </div>
 
           <button
             type="button"
             onClick={toggleMobileMenu}
-            className="spotify-btn spotify-btn-secondary lg:hidden px-4 py-2 text-sm"
+            className="spotify-btn spotify-btn-secondary lg:hidden text-sm"
             aria-expanded={mobileMenuOpen}
           >
             Menu
           </button>
 
           {token && user ? (
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-3">
               <Link
                 to="/profile"
-                className="flex items-center gap-2 rounded-full border border-white/10 bg-white bg-opacity-5 px-3 py-2 text-white text-decoration-none"
+                className="flex items-center gap-2 rounded-full border border-white/10 bg-white/5 px-3 py-2 text-white"
               >
                 {user.avatar_url ? (
-                  <img src={user.avatar_url} alt="Avatar" className="rounded-full" style={{ width: 32, height: 32, objectFit: 'cover' }} />
+                  <img src={user.avatar_url} alt="Avatar" className="h-8 w-8 rounded-full object-cover" />
                 ) : (
-                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-black fw-bold" style={{ width: 32, height: 32 }}>
+                  <span className="flex h-8 w-8 items-center justify-center rounded-full bg-white text-black font-semibold">
                     {user.name?.charAt(0).toUpperCase() || 'U'}
                   </span>
                 )}
-                <span className="hidden d-xl-inline text-white">{user.name}</span>
+                <span className="hidden xl:inline">{user.name}</span>
               </Link>
-              <button onClick={logout} className="spotify-btn spotify-btn-secondary px-3 py-2 text-sm">
+              <button onClick={logout} className="spotify-btn spotify-btn-secondary text-sm">
                 Logout
               </button>
             </div>
           ) : (
             <div className="flex flex-wrap gap-2">
-              <Link to="/login" className="spotify-btn spotify-btn-secondary px-3 py-2 text-sm">
+              <Link to="/login" className="spotify-btn spotify-btn-secondary text-sm">
                 Login
               </Link>
-              <Link to="/register" className="spotify-btn spotify-btn-primary px-3 py-2 text-sm">
+              <Link to="/register" className="spotify-btn spotify-btn-primary text-sm">
                 Register
               </Link>
             </div>
