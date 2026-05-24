@@ -1,4 +1,4 @@
-import create from 'zustand'
+import { create } from 'zustand'
 import { setAuthToken, clearAuthToken } from '../services/api'
 
 const AUTH_TOKEN_KEY = 'muzo_auth_token'
