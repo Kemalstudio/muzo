@@ -12,13 +12,15 @@ export default function Layout() {
     <div className="min-vh-100 bg-black text-white">
       <Header mobileMenuOpen={mobileMenuOpen} toggleMobileMenu={() => setMobileMenuOpen((state) => !state)} />
 
-      <div className="container-fluid px-3 px-xl-4 py-4">
+      <div className="container-fluid px-3 px-xl-4 py-4 pb-24">
         <div className="row gx-4">
           <div className="col-xl-2">
             <Sidebar />
           </div>
           <div className="col-xl-10">
-            <Outlet />
+            <main className="spotify-page-content">
+              <Outlet />
+            </main>
           </div>
         </div>
       </div>
