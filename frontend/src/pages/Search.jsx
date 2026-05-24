@@ -33,43 +33,41 @@ export default function Search() {
 
   return (
     <div className="space-y-8">
-      {/* Search Header */}
-      <div className="space-y-6">
-        <div>
-          <h1 className="text-4xl font-bold text-white">🔍 Search Music</h1>
-          <p className="mt-2 text-slate-400">
-            Find songs, artists, albums, and genres
-          </p>
-        </div>
-
-        {/* Search Input */}
-        <div className="relative">
-          <div className="relative rounded-3xl border border-slate-700 bg-slate-950 shadow-lg shadow-black/20 transition focus-within:border-indigo-500 focus-within:shadow-indigo-500/20">
-            <input
-              type="text"
-              value={query}
-              onChange={(e) => handleSearch(e.target.value)}
-              placeholder="Search songs, artists, albums, genres..."
-              className="w-full rounded-3xl border-0 bg-transparent px-6 py-4 text-white placeholder-slate-500 outline-none"
-            />
-            <div className="pointer-events-none absolute right-6 top-1/2 -translate-y-1/2">
-              {loading ? (
-                <div className="h-5 w-5 animate-spin rounded-full border-2 border-slate-700 border-t-indigo-600"></div>
-              ) : (
-                <svg
-                  className="h-5 w-5 text-slate-500"
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2}
-                    d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
-                  />
-                </svg>
-              )}
+      <div className="spotify-card p-5 rounded-4">
+        <div className="row g-4 align-items-center">
+          <div className="col-md-8">
+            <p className="text-uppercase fw-semibold text-secondary small mb-2">Search</p>
+            <h1 className="display-6 fw-bold text-white mb-3">Find the music you love</h1>
+            <p className="text-secondary mb-0">Type any song, artist, album or genre to explore matching music across the library.</p>
+          </div>
+          <div className="col-md-4">
+            <div className="input-group spotify-card p-3 rounded-4 border-0 bg-slate-950 shadow-none">
+              <input
+                type="text"
+                value={query}
+                onChange={(e) => handleSearch(e.target.value)}
+                placeholder="Search songs, artists, albums, genres..."
+                className="form-control bg-transparent border-0 text-white placeholder-slate-500"
+              />
+              <span className="input-group-text bg-transparent border-0 text-slate-500">
+                {loading ? (
+                  <div className="spinner-border spinner-border-sm text-white" role="status"></div>
+                ) : (
+                  <svg
+                    className="h-5 w-5"
+                    fill="none"
+                    stroke="currentColor"
+                    viewBox="0 0 24 24"
+                  >
+                    <path
+                      strokeLinecap="round"
+                      strokeLinejoin="round"
+                      strokeWidth={2}
+                      d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"
+                    />
+                  </svg>
+                )}
+              </span>
             </div>
           </div>
         </div>
