@@ -11,3 +11,7 @@ export default function ProtectedRoute() {
 
   return <Outlet />
 }
+
+
+
+
