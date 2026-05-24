@@ -53,3 +53,7 @@ export default function ArtistCard({ artist, onPlay }) {
     </Link>
   )
 }
+
+
+
+
