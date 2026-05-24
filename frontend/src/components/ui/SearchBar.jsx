@@ -14,7 +14,7 @@ export default function SearchBar() {
 
   return (
     <form onSubmit={handleSubmit} className="w-100">
-      <div className="input-group rounded-pill overflow-hidden border border-white/10 bg-black bg-opacity-75">
+      <div className="input-group rounded-full overflow-hidden border border-white/10 bg-black bg-opacity-75">
         <span className="input-group-text bg-transparent border-0 text-white px-3">
           <svg className="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
             <path
@@ -42,3 +42,7 @@ export default function SearchBar() {
     </form>
   )
 }
+
+
+
+
