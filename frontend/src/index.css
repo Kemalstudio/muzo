@@ -2,16 +2,16 @@
 @import "tailwindcss";
 
 :root {
-  --bg: #030406;
-  --surface: rgba(10, 12, 18, 0.92);
-  --surface-soft: rgba(12, 14, 24, 0.78);
+  --bg: #050610;
+  --surface: rgba(8, 10, 18, 0.88);
+  --surface-soft: rgba(12, 14, 24, 0.72);
   --text: #f8fafc;
   --muted: #94a3b8;
   --muted-strong: #cbd5e1;
   --border: rgba(255, 255, 255, 0.10);
-  --accent: #22d3ee;
-  --accent-soft: rgba(56, 189, 248, 0.15);
-  --shadow: 0 24px 80px -32px rgba(0, 0, 0, 0.72), 0 12px 32px -18px rgba(79, 70, 229, 0.16);
+  --accent: #7c3aed;
+  --accent-soft: rgba(124, 58, 237, 0.14);
+  --shadow: 0 32px 120px -48px rgba(0, 0, 0, 0.65), 0 16px 40px -28px rgba(124, 58, 237, 0.25);
   font-family: 'Nunito', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
@@ -31,10 +31,10 @@ body {
   font-family: inherit;
   line-height: 1.6;
   color: var(--text);
-  background: radial-gradient(circle at top left, rgba(39, 44, 62, 0.85), transparent 18%),
-    radial-gradient(circle at top right, rgba(22, 163, 74, 0.15), transparent 15%),
-    radial-gradient(circle at bottom left, rgba(79, 70, 229, 0.1), transparent 18%),
-    #020203;
+  background: radial-gradient(circle at top left, rgba(102, 126, 234, 0.16), transparent 18%),
+    radial-gradient(circle at top right, rgba(16, 185, 129, 0.14), transparent 16%),
+    radial-gradient(circle at bottom left, rgba(168, 85, 247, 0.12), transparent 18%),
+    linear-gradient(180deg, #050610 0%, #020307 100%);
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -71,7 +71,7 @@ button {
 }
 
 button {
-  transition: transform 0.2s ease, filter 0.2s ease, box-shadow 0.2s ease;
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
 }
 
 button:hover,
@@ -92,7 +92,7 @@ a {
 }
 
 ::selection {
-  background: rgba(34, 211, 238, 0.25);
+  background: rgba(124, 58, 237, 0.24);
   color: #fff;
 }
 
@@ -143,9 +143,13 @@ select {
 .bg-black,
 .bg-black-800,
 .spotify-card,
-.spotify-hero-card,
 .spotify-panel {
-  background: var(--surface);
+  background: rgba(7, 10, 18, 0.92);
+}
+
+.navbar {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 16px 40px -28px rgba(0, 0, 0, 0.75);
 }
 
 .btn-outline-light {
@@ -155,7 +159,7 @@ select {
 
 .btn-outline-light:hover,
 .btn-outline-light:focus {
-  background: rgba(255, 255, 255, 0.07);
+  background: rgba(255, 255, 255, 0.08);
   color: #fff;
 }
 
@@ -172,26 +176,81 @@ select {
   border-radius: 1.25rem !important;
 }
 
-.spotify-card {
+.spotify-card,
+.spotify-panel {
+  background: rgba(12, 14, 24, 0.84);
   border: 1px solid rgba(255, 255, 255, 0.08);
   box-shadow: var(--shadow);
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(22px);
+}
+
+.spotify-card {
+  border-radius: 2rem;
+}
+
+.spotify-panel {
+  border-radius: 1.75rem;
+}
+
+.spotify-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 9999px;
+  padding: 0.85rem 1.5rem;
+  font-weight: 700;
+  transition: transform 0.18s ease, filter 0.18s ease, box-shadow 0.18s ease;
+}
+
+.spotify-btn-primary {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  color: #fff;
+  box-shadow: 0 20px 40px -20px rgba(99, 102, 241, 0.55);
+}
+
+.spotify-btn-secondary {
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  color: #fff;
+  background: rgba(255, 255, 255, 0.04);
+}
+
+.spotify-btn:hover,
+.spotify-btn-primary:hover,
+.spotify-btn-secondary:hover {
+  filter: brightness(1.05);
+  transform: translateY(-1px);
+}
+
+.spotify-input {
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  color: #fff;
+}
+
+.spotify-input::placeholder {
+  color: rgba(255, 255, 255, 0.55);
 }
 
 .spotify-hero-card {
-  min-height: 240px;
+  min-height: 260px;
   position: relative;
   overflow: hidden;
   border: 1px solid rgba(255, 255, 255, 0.12);
-  backdrop-filter: blur(20px);
+  backdrop-filter: blur(24px);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.spotify-hero-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 30px 80px -40px rgba(0, 0, 0, 0.5);
 }
 
 .spotify-hero-card::before {
   content: '';
   position: absolute;
   inset: 0;
-  opacity: 0.35;
-  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.15), transparent 35%);
+  opacity: 0.32;
+  background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.14), transparent 35%);
 }
 
 .spotify-list-item {
@@ -204,12 +263,12 @@ select {
 }
 
 .hero-accent {
-  width: 120px;
-  height: 120px;
+  width: 140px;
+  height: 140px;
   background: radial-gradient(circle at center, rgba(255, 255, 255, 0.18), transparent 55%);
   position: absolute;
-  right: -24px;
-  top: -24px;
+  right: -28px;
+  top: -28px;
   z-index: 0;
 }
 
@@ -240,6 +299,33 @@ select {
 
 .hover-bg-white:hover {
   background: rgba(255, 255, 255, 0.06) !important;
+}
+
+.section-heading {
+  padding-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.section-heading h2 {
+  margin: 0;
+}
+
+.section-heading p {
+  margin-top: 0.75rem;
+  color: rgba(226, 232, 240, 0.78);
+}
+
+.badge-soft {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.btn-glow {
+  background: linear-gradient(135deg, #7c3aed, #0ea5e9);
+  color: #fff;
+  box-shadow: 0 20px 50px -30px rgba(124, 58, 237, 0.65);
 }
 
 @media (max-width: 991px) {
