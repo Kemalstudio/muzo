@@ -35,3 +35,7 @@ export default function useArtist(id) {
 
   return { artist, loading, error }
 }
+
+
+
+
