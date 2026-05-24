@@ -34,7 +34,7 @@ export default function SearchBar() {
         />
         <button
           type="submit"
-          className="btn btn-outline-light rounded-pill px-4"
+          className="spotify-btn spotify-btn-secondary rounded-full px-4 text-sm"
         >
           Search
         </button>
