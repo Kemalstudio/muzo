@@ -1,7 +1,11 @@
 export default function Card({ children, className = '' }) {
   return (
-    <div className={"rounded-3xl border border-slate-700 bg-slate-950 p-5 shadow-xl shadow-black/20 " + className}>
+    <div className={"spotify-card rounded-3xl p-5 " + className}>
       {children}
     </div>
   )
 }
+
+
+
+
