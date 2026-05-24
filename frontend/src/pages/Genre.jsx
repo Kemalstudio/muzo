@@ -55,8 +55,8 @@ export default function Genre() {
       {/* Genre Header */}
       <div className="relative overflow-hidden rounded-3xl border border-slate-700">
         {/* Banner Background */}
-        <div className="relative h-80 w-full bg-gradient-to-br from-cyan-600 to-blue-600">
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
+        <div className="relative h-80 w-full bg-linear-to-br from-cyan-600 to-blue-600">
+          <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/50 to-transparent"></div>
         </div>
 
         {/* Genre Info Overlay */}
@@ -84,7 +84,7 @@ export default function Genre() {
               <p className="text-sm text-slate-400">Popularity</p>
               <div className="mt-2 h-2 w-32 overflow-hidden rounded-full bg-slate-800">
                 <div
-                  className="h-full bg-gradient-to-r from-indigo-600 to-purple-600"
+                  className="h-full bg-linear-to-r from-indigo-600 to-purple-600"
                   style={{ width: `${(genre.popularity || 0) * 100}%` }}
                 ></div>
               </div>
