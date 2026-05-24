@@ -65,8 +65,8 @@ export default function Playlist() {
       {/* Playlist Hero Section */}
       <div className="relative overflow-hidden rounded-3xl border border-slate-700">
         {/* Gradient Background */}
-        <div className="relative h-80 w-full bg-gradient-to-br from-indigo-600 via-purple-600 to-pink-600">
-          <div className="absolute inset-0 bg-gradient-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
+        <div className="relative h-80 w-full bg-linear-to-br from-indigo-600 via-purple-600 to-pink-600">
+          <div className="absolute inset-0 bg-linear-to-t from-slate-950 via-slate-950/60 to-transparent"></div>
         </div>
 
         {/* Playlist Info Overlay */}
@@ -74,7 +74,7 @@ export default function Playlist() {
           {/* Playlist Cover & Details */}
           <div className="flex items-end gap-8">
             {/* Cover Art */}
-            <div className="h-56 w-56 flex-shrink-0 overflow-hidden rounded-2xl border-4 border-slate-950 bg-gradient-to-br from-indigo-600 to-purple-600 shadow-2xl shadow-black/50">
+            <div className="h-56 w-56 flex-shrink-0 overflow-hidden rounded-2xl border-4 border-slate-950 bg-linear-to-br from-indigo-600 to-purple-600 shadow-2xl shadow-black/50">
               <div className="flex h-full items-center justify-center">
                 <svg
                   className="h-24 w-24 text-white/60"
