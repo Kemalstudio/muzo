@@ -33,3 +33,7 @@ export default function useArtists() {
 
   return { artists, loading, error }
 }
+
+
+
+
