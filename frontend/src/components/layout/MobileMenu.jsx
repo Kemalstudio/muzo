@@ -11,7 +11,7 @@ export default function MobileMenu({ open, onClose }) {
   }
 
   return (
-    <div className="lg:hidden border-t border-slate-800 bg-slate-950/95 px-5 py-4">
+    <div className="lg:hidden spotify-card rounded-4 border-t border-slate-800 px-5 py-4">
       <div className="space-y-2">
         <Link
           to="/"
