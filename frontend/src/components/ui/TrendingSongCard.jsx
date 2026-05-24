@@ -3,35 +3,23 @@ import LikeButton from '../favorites/LikeButton'
 
 export default function TrendingSongCard({ track, onPlay, rank }) {
   return (
-    <div className="group relative overflow-hidden rounded-2xl border border-slate-700 bg-linear-to-br from-slate-900 to-slate-950 transition duration-300 hover:border-indigo-500 hover:shadow-lg hover:shadow-indigo-500/20">
-      <div className="flex h-full flex-col p-5">
-        {/* Rank Badge */}
-        <div className="mb-4 flex items-start justify-between">
-          <div className="flex h-10 w-10 items-center justify-center rounded-full bg-linear-to-br from-indigo-600 to-purple-600">
-            <span className="text-sm font-bold text-white">#{rank}</span>
-          </div>
+    <div className="bg-[#121216] border border-white/[0.04] p-5 rounded-[2rem] hover:border-white/[0.08] transition duration-300 flex flex-col justify-between h-52 group">
+      <div>
+        <div className="flex justify-between items-start">
+          <span className="bg-[#2362F6] text-[10px] font-bold text-white py-1 px-2.5 rounded-full">
+            #{rank}
+          </span>
           <LikeButton track={track} size="sm" />
         </div>
-
-        {/* Track Info */}
-        <div className="flex-1">
-          <div className="mb-1 text-xs uppercase tracking-[0.32em] text-slate-500">
-            Trending
-          </div>
-          <h3 className="text-base font-bold text-white group-hover:text-indigo-400">
-            {track.title}
-          </h3>
-          <p className="mt-2 text-sm text-slate-400">{track.artist}</p>
-        </div>
-
-        {/* Play Button */}
-        <Button
-          onClick={() => onPlay(track)}
-          className="mt-4 w-full transition duration-300 group-hover:from-indigo-600 group-hover:to-purple-600"
-        >
-          Play Now
-        </Button>
+        <h3 className="font-bold text-sm text-white truncate mt-4 group-hover:text-[#2362F6] transition">{track.title}</h3>
+        <p className="text-xs text-slate-500 truncate mt-0.5">{track.artist}</p>
       </div>
+      <Button
+        onClick={() => onPlay(track)}
+        className="w-full bg-[#2362F6] group-hover:bg-white group-hover:text-black hover:scale-105 transition"
+      >
+        Play Now
+      </Button>
     </div>
   )
 }
