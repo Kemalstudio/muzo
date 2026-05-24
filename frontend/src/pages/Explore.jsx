@@ -20,12 +20,19 @@ export default function Explore() {
 
   return (
     <div className="space-y-12">
-      {/* Header Section */}
-      <div className="space-y-2">
-        <h1 className="text-5xl font-bold text-white">🎵 Explore Music</h1>
-        <p className="text-lg text-slate-400">
-          Discover new genres, artists, and albums
-        </p>
+      <div className="spotify-card p-5 rounded-4">
+        <div className="row g-4 align-items-center">
+          <div className="col-lg-8">
+            <p className="text-uppercase fw-semibold text-secondary small mb-2">Discover</p>
+            <h1 className="display-5 fw-bold text-white mb-3">Explore Music</h1>
+            <p className="lead text-secondary mb-0">
+              Discover new genres, artists and albums within a polished dark interface that feels premium and modern.
+            </p>
+          </div>
+          <div className="col-lg-4 text-lg-end">
+            <span className="badge bg-white bg-opacity-10 text-white rounded-pill py-2 px-3">Curated for you</span>
+          </div>
+        </div>
       </div>
 
       {/* Genres Section */}
@@ -120,7 +127,7 @@ export default function Explore() {
             {genres?.map((genre) => (
               <div
                 key={genre.id}
-                className="group relative overflow-hidden rounded-xl bg-gradient-to-br from-indigo-600/20 to-purple-600/20 p-4 transition hover:from-indigo-600/40 hover:to-purple-600/40"
+                className="group relative overflow-hidden rounded-xl bg-linear-to-br from-indigo-600/20 to-purple-600/20 p-4 transition hover:from-indigo-600/40 hover:to-purple-600/40"
               >
                 <div className="relative z-10">
                   <h4 className="font-semibold text-white group-hover:text-indigo-300">
