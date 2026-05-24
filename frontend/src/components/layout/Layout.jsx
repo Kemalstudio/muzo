@@ -9,26 +9,25 @@ export default function Layout() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
 
   return (
-    <div className="min-vh-100 bg-black text-white">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(99,102,241,0.16),transparent_16%),radial-gradient(circle_at_top_right,rgba(34,211,238,0.1),transparent_14%),linear-gradient(180deg,#050610, #02030a)] text-white">
       <Header mobileMenuOpen={mobileMenuOpen} toggleMobileMenu={() => setMobileMenuOpen((state) => !state)} />
 
-      <div className="container-fluid px-3 px-xl-4 py-4 pb-24">
-        <div className="row gx-4">
-          <div className="col-xl-2">
+      <div className="mx-auto max-w-[1600px] px-4 py-5 md:px-6 xl:px-8">
+        <div className="xl:grid xl:grid-cols-[280px_minmax(0,1fr)] xl:gap-6">
+          <aside className="hidden xl:block">
             <Sidebar />
-          </div>
-          <div className="col-xl-10">
-            <main className="spotify-page-content">
-              <Outlet />
-            </main>
-          </div>
+          </aside>
+
+          <main className="mt-6 xl:mt-0 min-h-[calc(100vh-190px)]">
+            <Outlet />
+          </main>
         </div>
       </div>
 
       <MobileMenu open={mobileMenuOpen} onClose={() => setMobileMenuOpen(false)} />
 
-      <footer className="fixed bottom-0 left-0 right-0 z-50 border-top border-white/10 bg-black bg-opacity-95 backdrop-blur-xl py-3">
-        <div className="container-fluid px-3 px-xl-4">
+      <footer className="fixed bottom-0 left-0 right-0 z-50 border-t border-white/10 bg-black/60 backdrop-blur-xl px-4 py-3">
+        <div className="mx-auto max-w-[1600px]">
           <PlayerBar />
         </div>
       </footer>
