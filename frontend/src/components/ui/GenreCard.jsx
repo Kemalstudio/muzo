@@ -56,3 +56,7 @@ export default function GenreCard({ genre }) {
     </Link>
   )
 }
+
+
+
+
