@@ -8,58 +8,61 @@ export default function Header({ mobileMenuOpen, toggleMobileMenu }) {
   const logout = useAuthStore((state) => state.logout)
 
   return (
-    <header className="navbar navbar-dark sticky-top bg-black bg-opacity-95 border-bottom border-white/10 shadow-sm py-3">
-      <div className="container-fluid d-flex flex-wrap align-items-center gap-3">
-        <Link to="/" className="navbar-brand d-flex align-items-center gap-3 p-0 text-white">
-          <span className="badge bg-success text-black rounded-pill py-2 px-3">MUZO</span>
-          <span className="fw-semibold">Music</span>
+    <header className="sticky-top top-0 z-50 border-b border-white/10 bg-[rgba(7,10,18,0.92)] backdrop-blur-xl shadow-[0_16px_60px_-28px_rgba(0,0,0,0.75)] py-3">
+      <div className="container-fluid flex flex-wrap items-center gap-3">
+        <Link to="/" className="navbar-brand flex items-center gap-3 p-0 text-white">
+          <span className="badge-soft bg-linear-to-r from-indigo-500 to-cyan-400 text-black rounded-full py-2 px-3 shadow-glow">MUZO</span>
+          <div className="flex flex-col">
+            <span className="font-semibold">Music Studio</span>
+            <small className="text-secondary">Modern beats & premium playlists</small>
+          </div>
         </Link>
 
-        <div className="flex-fill d-none d-lg-flex px-2">
+        <div className="flex-1 hidden lg:flex px-2">
           <SearchBar />
         </div>
 
-        <div className="d-flex flex-wrap gap-2 align-items-center ms-auto">
-          <div className="d-none d-lg-flex gap-2">
-            <button className="btn btn-outline-light btn-sm rounded-pill px-3">Minimal</button>
-            <button className="btn btn-outline-light btn-sm rounded-pill px-3">House</button>
-            <button className="btn btn-outline-light btn-sm rounded-pill px-3">Chill</button>
+        <div className="flex flex-wrap gap-2 items-center ml-auto">
+          <div className="hidden lg:flex gap-2">
+            <button className="spotify-btn spotify-btn-secondary px-3 py-2 text-sm">Minimal</button>
+            <button className="spotify-btn spotify-btn-secondary px-3 py-2 text-sm">House</button>
+            <button className="spotify-btn spotify-btn-secondary px-3 py-2 text-sm">Chill</button>
           </div>
 
           <button
             type="button"
             onClick={toggleMobileMenu}
-            className="btn btn-outline-light btn-sm rounded-pill d-lg-none"
+            className="spotify-btn spotify-btn-secondary lg:hidden px-4 py-2 text-sm"
             aria-expanded={mobileMenuOpen}
           >
             Menu
           </button>
 
           {token && user ? (
-            <div className="d-flex align-items-center gap-2">
+            <div className="flex items-center gap-2">
               <Link
                 to="/profile"
-                className="d-flex align-items-center gap-2 rounded-pill border border-white/10 bg-white bg-opacity-5 px-3 py-2 text-white text-decoration-none"
+                className="flex items-center gap-2 rounded-full border border-white/10 bg-white bg-opacity-5 px-3 py-2 text-white text-decoration-none"
               >
                 {user.avatar_url ? (
-                  <img src={user.avatar_url} alt="Avatar" className="rounded-circle" style={{ width: 32, height: 32, objectFit: 'cover' }} />
+                  <img src={user.avatar_url} alt="Avatar" className="rounded-full" style={{ width: 32, height: 32, objectFit: 'cover' }} />
                 ) : (
-                  <span className="d-inline-flex h-8 w-8 align-items-center justify-content-center rounded-circle bg-white text-black fw-bold" style={{ width: 32, height: 32 }}>
+                  <span className="inline-flex h-8 w-8 items-center justify-center rounded-full bg-white text-black fw-bold" style={{ width: 32, height: 32 }}>
                     {user.name?.charAt(0).toUpperCase() || 'U'}
                   </span>
                 )}
-                <span className="d-none d-xl-inline text-white">{user.name}</span>
+                <span className="hidden d-xl-inline text-white">{user.name}</span>
               </Link>
-              <button onClick={logout} className="btn btn-outline-light btn-sm rounded-pill px-3">
+              <button onClick={logout} className="spotify-btn spotify-btn-secondary px-3 py-2 text-sm">
                 Logout
               </button>
             </div>
           ) : (
-            <div className="d-flex flex-wrap gap-2">
-              <Link to="/login" className="btn btn-outline-light btn-sm rounded-pill px-3">
+            <div className="flex flex-wrap gap-2">
+              <Link to="/login" className="spotify-btn spotify-btn-secondary px-3 py-2 text-sm">
                 Login
               </Link>
-              <Link to="/register" className="btn btn-light btn-sm rounded-pill px-3 text-black">
+              <Link to="/register" className="spotify-btn spotify-btn-primary px-3 py-2 text-sm">
                 Register
               </Link>
             </div>
@@ -69,3 +72,7 @@ export default function Header({ mobileMenuOpen, toggleMobileMenu }) {
     </header>
   )
 }
+
+
+
+
